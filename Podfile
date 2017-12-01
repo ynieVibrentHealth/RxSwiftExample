@@ -10,14 +10,13 @@ inhibit_all_warnings!
 
 def shared_pods
 	pod 'IGListKit', '~> 3.0.0'
-	pod 'Kingfisher', '~> 3.7.1'
+	pod 'Kingfisher', '3.7.1'
 	pod 'SnapKit', '~> 3.2.0'
 	pod 'RxSwift', '~> 3.4'
     pod 'RxCocoa', '~> 3.4'
 end
 
 target 'RxSwiftExample' do
-  # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   shared_pods
 end
 
