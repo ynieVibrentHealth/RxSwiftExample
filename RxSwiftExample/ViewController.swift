@@ -7,19 +7,73 @@
 //
 
 import UIKit
+import SnapKit
+import RxCocoa
+import RxSwift
 
 class ViewController: UIViewController {
-
+    enum ExampleType {
+        case Textfield
+    }
+    
+    fileprivate let examples:[ExampleType] = [.Textfield]
+    
+    fileprivate lazy var exampleTable:UITableView = {
+        let tableView = UITableView()
+        tableView.dataSource = self
+        tableView.delegate = self
+        self.view.addSubview(tableView)
+        return tableView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.view.backgroundColor = .white
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.edgesForExtendedLayout = UIRectEdge.all
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    override func viewWillLayoutSubviews() {
+        exampleTable.snp.updateConstraints { (make) in
+            make.edges.equalTo(self.view)
+        }
+        super.viewWillLayoutSubviews()
+    }
 }
 
+extension ViewController:UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return examples.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = UITableViewCell(style: UITableViewCellStyle.value1, reuseIdentifier: "Cell")
+        switch examples[indexPath.row] {
+        case .Textfield:
+            cell.textLabel?.text = "Textfield"
+        }
+        return cell
+    }
+    
+    
+}
+
+extension ViewController:UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        navigateTo(example: examples[indexPath.row])
+    }
+    
+    private func navigateTo(example:ExampleType) {
+        switch example {
+        case .Textfield:
+            let textFieldEx = CitySearchExample()
+            self.navigationController?.pushViewController(textFieldEx, animated: true)
+        }
+    }
+}
