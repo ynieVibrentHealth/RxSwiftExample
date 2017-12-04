@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4176CED001CB1761CDDCCC2B /* Pods_RxSwiftExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924B5E37CB69F85E3427CC43 /* Pods_RxSwiftExampleTests.framework */; };
+		4C1C974E1FD5B51E00EC4D0F /* FormTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C974D1FD5B51E00EC4D0F /* FormTableController.swift */; };
+		4C1C97501FD5BA7100EC4D0F /* FormTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C1C974F1FD5BA7100EC4D0F /* FormTextField.swift */; };
 		4C288D721FD4ADB7008697F6 /* ColorPickerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C288D711FD4ADB7008697F6 /* ColorPickerExample.swift */; };
 		4C288D741FD4AFBC008697F6 /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */; };
 		4C5C87D41FD1D80B00BEAD5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87D31FD1D80B00BEAD5C /* AppDelegate.swift */; };
@@ -17,6 +19,8 @@
 		4C5C87DE1FD1D80B00BEAD5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C87DC1FD1D80B00BEAD5C /* LaunchScreen.storyboard */; };
 		4C5C87E91FD1D80B00BEAD5C /* RxSwiftExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87E81FD1D80B00BEAD5C /* RxSwiftExampleTests.swift */; };
 		4C5C87F51FD1E34000BEAD5C /* CitySearchExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87F41FD1E34000BEAD5C /* CitySearchExample.swift */; };
+		4C88F7371FD5E291009BC9D5 /* FormStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88F7361FD5E291009BC9D5 /* FormStackController.swift */; };
+		4C88F7391FD5E6F5009BC9D5 /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88F7381FD5E6F5009BC9D5 /* FormTextFieldView.swift */; };
 		D3611E68258CE28381D52709 /* Pods_RxSwiftExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD23EA40416875DBABD2838B /* Pods_RxSwiftExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +36,8 @@
 
 /* Begin PBXFileReference section */
 		1CEEF0CB16B2B82433467DA7 /* Pods-RxSwiftExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExampleTests/Pods-RxSwiftExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4C1C974D1FD5B51E00EC4D0F /* FormTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTableController.swift; sourceTree = "<group>"; };
+		4C1C974F1FD5BA7100EC4D0F /* FormTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextField.swift; sourceTree = "<group>"; };
 		4C288D711FD4ADB7008697F6 /* ColorPickerExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerExample.swift; sourceTree = "<group>"; };
 		4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		4C5C87D01FD1D80B00BEAD5C /* RxSwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +51,8 @@
 		4C5C87E81FD1D80B00BEAD5C /* RxSwiftExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftExampleTests.swift; sourceTree = "<group>"; };
 		4C5C87EA1FD1D80B00BEAD5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5C87F41FD1E34000BEAD5C /* CitySearchExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchExample.swift; sourceTree = "<group>"; };
+		4C88F7361FD5E291009BC9D5 /* FormStackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackController.swift; sourceTree = "<group>"; };
+		4C88F7381FD5E6F5009BC9D5 /* FormTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldView.swift; sourceTree = "<group>"; };
 		770B95DE3184E597BFE880D5 /* Pods-RxSwiftExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExample/Pods-RxSwiftExample.debug.xcconfig"; sourceTree = "<group>"; };
 		7D3C7018E6A96AB8C3858BA7 /* Pods-RxSwiftExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExampleTests/Pods-RxSwiftExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		81B747F9BA593B0125E00612 /* Pods-RxSwiftExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExample/Pods-RxSwiftExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -72,6 +80,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C1C974C1FD5B27800EC4D0F /* ErrorOnTextfields */ = {
+			isa = PBXGroup;
+			children = (
+				4C88F7351FD5E27C009BC9D5 /* StackViewVersion */,
+				4C1C974D1FD5B51E00EC4D0F /* FormTableController.swift */,
+				4C1C974F1FD5BA7100EC4D0F /* FormTextField.swift */,
+			);
+			path = ErrorOnTextfields;
+			sourceTree = "<group>";
+		};
 		4C288D701FD4AD9F008697F6 /* ColorPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -104,6 +122,7 @@
 		4C5C87D21FD1D80B00BEAD5C /* RxSwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				4C1C974C1FD5B27800EC4D0F /* ErrorOnTextfields */,
 				4C288D701FD4AD9F008697F6 /* ColorPicker */,
 				4C5C87F31FD1DFCB00BEAD5C /* CityExample */,
 				4C5C87D31FD1D80B00BEAD5C /* AppDelegate.swift */,
@@ -131,6 +150,15 @@
 				4C5C87F41FD1E34000BEAD5C /* CitySearchExample.swift */,
 			);
 			path = CityExample;
+			sourceTree = "<group>";
+		};
+		4C88F7351FD5E27C009BC9D5 /* StackViewVersion */ = {
+			isa = PBXGroup;
+			children = (
+				4C88F7361FD5E291009BC9D5 /* FormStackController.swift */,
+				4C88F7381FD5E6F5009BC9D5 /* FormTextFieldView.swift */,
+			);
+			path = StackViewVersion;
 			sourceTree = "<group>";
 		};
 		95C3C41882680C94123AB05C /* Frameworks */ = {
@@ -385,6 +413,10 @@
 			files = (
 				4C288D721FD4ADB7008697F6 /* ColorPickerExample.swift in Sources */,
 				4C5C87D61FD1D80B00BEAD5C /* ViewController.swift in Sources */,
+				4C88F7371FD5E291009BC9D5 /* FormStackController.swift in Sources */,
+				4C1C974E1FD5B51E00EC4D0F /* FormTableController.swift in Sources */,
+				4C88F7391FD5E6F5009BC9D5 /* FormTextFieldView.swift in Sources */,
+				4C1C97501FD5BA7100EC4D0F /* FormTextField.swift in Sources */,
 				4C5C87D41FD1D80B00BEAD5C /* AppDelegate.swift in Sources */,
 				4C5C87F51FD1E34000BEAD5C /* CitySearchExample.swift in Sources */,
 				4C288D741FD4AFBC008697F6 /* CircleViewModel.swift in Sources */,

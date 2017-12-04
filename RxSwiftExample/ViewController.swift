@@ -15,9 +15,10 @@ class ViewController: UIViewController {
     enum ExampleType {
         case Textfield
         case PubSub
+        case Form
     }
     
-    fileprivate let examples:[ExampleType] = [.Textfield, .PubSub]
+    fileprivate let examples:[ExampleType] = [.Textfield, .PubSub, .Form]
     
     fileprivate lazy var exampleTable:UITableView = {
         let tableView = UITableView()
@@ -59,6 +60,8 @@ extension ViewController:UITableViewDataSource {
             cell.textLabel?.text = "Textfield"
         case .PubSub:
             cell.textLabel?.text = "Publisher Subscriber, ect..."
+        case .Form:
+            cell.textLabel?.text = "Form"
         }
         return cell
     }
@@ -79,6 +82,9 @@ extension ViewController:UITableViewDelegate {
             self.navigationController?.pushViewController(textFieldEx, animated: true)
         case .PubSub:
             let example = ColorPickerExample()
+            self.navigationController?.pushViewController(example, animated: true)
+        case .Form:
+            let example = FormStackController()
             self.navigationController?.pushViewController(example, animated: true)
         }
     }
