@@ -14,9 +14,10 @@ import RxSwift
 class ViewController: UIViewController {
     enum ExampleType {
         case Textfield
+        case PubSub
     }
     
-    fileprivate let examples:[ExampleType] = [.Textfield]
+    fileprivate let examples:[ExampleType] = [.Textfield, .PubSub]
     
     fileprivate lazy var exampleTable:UITableView = {
         let tableView = UITableView()
@@ -56,6 +57,8 @@ extension ViewController:UITableViewDataSource {
         switch examples[indexPath.row] {
         case .Textfield:
             cell.textLabel?.text = "Textfield"
+        case .PubSub:
+            cell.textLabel?.text = "Publisher Subscriber, ect..."
         }
         return cell
     }
@@ -74,6 +77,9 @@ extension ViewController:UITableViewDelegate {
         case .Textfield:
             let textFieldEx = CitySearchExample()
             self.navigationController?.pushViewController(textFieldEx, animated: true)
+        case .PubSub:
+            let example = ColorPickerExample()
+            self.navigationController?.pushViewController(example, animated: true)
         }
     }
 }

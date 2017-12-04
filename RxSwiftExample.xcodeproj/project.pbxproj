@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4176CED001CB1761CDDCCC2B /* Pods_RxSwiftExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924B5E37CB69F85E3427CC43 /* Pods_RxSwiftExampleTests.framework */; };
+		4C288D721FD4ADB7008697F6 /* ColorPickerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C288D711FD4ADB7008697F6 /* ColorPickerExample.swift */; };
+		4C288D741FD4AFBC008697F6 /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */; };
 		4C5C87D41FD1D80B00BEAD5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87D31FD1D80B00BEAD5C /* AppDelegate.swift */; };
 		4C5C87D61FD1D80B00BEAD5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87D51FD1D80B00BEAD5C /* ViewController.swift */; };
 		4C5C87D91FD1D80B00BEAD5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C87D71FD1D80B00BEAD5C /* Main.storyboard */; };
@@ -30,6 +32,8 @@
 
 /* Begin PBXFileReference section */
 		1CEEF0CB16B2B82433467DA7 /* Pods-RxSwiftExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExampleTests/Pods-RxSwiftExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4C288D711FD4ADB7008697F6 /* ColorPickerExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerExample.swift; sourceTree = "<group>"; };
+		4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		4C5C87D01FD1D80B00BEAD5C /* RxSwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5C87D31FD1D80B00BEAD5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C5C87D51FD1D80B00BEAD5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +72,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4C288D701FD4AD9F008697F6 /* ColorPicker */ = {
+			isa = PBXGroup;
+			children = (
+				4C288D711FD4ADB7008697F6 /* ColorPickerExample.swift */,
+				4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */,
+			);
+			path = ColorPicker;
+			sourceTree = "<group>";
+		};
 		4C5C87C71FD1D80B00BEAD5C = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +104,7 @@
 		4C5C87D21FD1D80B00BEAD5C /* RxSwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				4C288D701FD4AD9F008697F6 /* ColorPicker */,
 				4C5C87F31FD1DFCB00BEAD5C /* CityExample */,
 				4C5C87D31FD1D80B00BEAD5C /* AppDelegate.swift */,
 				4C5C87D51FD1D80B00BEAD5C /* ViewController.swift */,
@@ -369,9 +383,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4C288D721FD4ADB7008697F6 /* ColorPickerExample.swift in Sources */,
 				4C5C87D61FD1D80B00BEAD5C /* ViewController.swift in Sources */,
 				4C5C87D41FD1D80B00BEAD5C /* AppDelegate.swift in Sources */,
 				4C5C87F51FD1E34000BEAD5C /* CitySearchExample.swift in Sources */,
+				4C288D741FD4AFBC008697F6 /* CircleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
