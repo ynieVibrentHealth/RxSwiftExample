@@ -33,6 +33,15 @@ class FormStackController:UIViewController {
         return stackView
     }()
     
+    
+    /**
+     Instead of using the standard target action that UIKit uses, this leverages the RxCocoa framework to inject the action that responds to user tap.
+     
+     There’s nothing wrong with the methodology of defining a selector, however, having an action that runs in a different area of code can cause confusing.
+     
+     By doing this, we are able to set the action directly in the block initialization of the button.
+
+     **/
     fileprivate lazy var barButton:UIBarButtonItem = {
         let barButton = UIBarButtonItem(title: "Save", style: .plain, target: nil, action: nil)
         barButton.rx.tap
@@ -47,6 +56,15 @@ class FormStackController:UIViewController {
     fileprivate lazy var disposeBag = DisposeBag()
     
     fileprivate var nameViewModel:NameViewModel?
+    
+    /**
+     Initializing each textField view. The only property that’s injected is the validation function; each textfield has a unique validation to determine if the user input matches what we expect. In addition, it also sets the error message for the case that the user input text is not valid. For instance, if the user enters an email address that isn’t valid, the error message displayed is:
+     “Please enter a valid email address”
+     
+     Whereas if the user doesn’t enter an email address, the error message should be:
+     “Email address is required”
+
+     **/
     
     fileprivate lazy var firstNameView:FormTextFieldView = {
         let inputField = FormTextFieldView()
@@ -89,6 +107,8 @@ class FormStackController:UIViewController {
         self.stackContainer.addArrangedSubview(lastNameView)
         self.stackContainer.addArrangedSubview(emailView)
         self.navigationItem.rightBarButtonItem = barButton
+        
+        //sending request to interactor
         let request = FormStackModel.Functions.Request.GetUser
         output?.handle(request)
     }
@@ -125,10 +145,17 @@ extension FormStackController:FormStackViewInput {
     }
     
     private func setupUser(with viewModel:NameViewModel) {
+        /**
+         Configuring each view with the appropriate properties including placeholder, validity model (a variable type containing a Bool), and the value model.
+         **/
         firstNameView.configure(placeHolder: "First Name", valid: viewModel.firstNameValid, value: viewModel.firstNameValue)
         lastNameView.configure(placeHolder: "Last Name", valid: viewModel.lastNameValid, value: viewModel.lastNameValue)
         emailView.configure(placeHolder: "Email Address", valid: viewModel.emailAddressValid, value: viewModel.emailAddressValue)
         self.nameViewModel = viewModel
+        /**
+        Combining the validation values for all fields
+         In this function, the observable class is combining the checks of the name fields, and email field are valid and binding them to the state of the save bar button.
+         **/
         Observable.combineLatest(viewModel.firstNameValid.asObservable(),
                                  viewModel.lastNameValid.asObservable(),
                                  viewModel.emailAddressValid.asObservable(),

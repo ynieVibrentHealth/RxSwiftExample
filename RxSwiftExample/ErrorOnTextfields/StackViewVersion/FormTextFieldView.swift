@@ -40,6 +40,10 @@ class FormTextFieldView:UIView {
         self.addSubview(view)
         return view
     }()
+    
+    /**
+     In the configure function, we subscribe the textField using RxCocoa to validate the user input.
+     **/
     public func configure(placeHolder:String, valid:Variable<Bool>, value:Variable<String>) {
         textField.placeholder = placeHolder
         textField.text = value.value
@@ -47,6 +51,9 @@ class FormTextFieldView:UIView {
             .subscribe(onNext: { [weak self] (inputString) in
                 guard let inputString = inputString else {return}
                 var newValue = ""
+                /**
+                 Run the injected validation function. If the validation fails, the error label shows the text that was also injected.
+                 **/
                 if let isValid = self?.validation?(inputString),
                     !isValid {
                     newValue = (self?.errorText)!
@@ -55,6 +62,7 @@ class FormTextFieldView:UIView {
                     self?.valid?.value = true
                 }
                 
+                //Aninmate the error label
                 UIView.animate(withDuration: 0.25) {
                     self?.errorLabel.text = newValue
                     self?.errorLabel.setNeedsLayout()
@@ -65,9 +73,15 @@ class FormTextFieldView:UIView {
                     self?.superview?.layoutSubviews()
                 }
             }).addDisposableTo(self.disposeBag)
+        
+        /**
+         On editing did end, we subscribe to the editing did end delegate method for a textField. Similar to using the tap function of a button, by using RxCocoa we are able to directly set a function instead of placing it somewhere else the way we would have to using a selector.
+         **/
         textField.rx.controlEvent([.editingDidEnd]).asObservable().subscribe(onNext: { _ in
-            self.value?.value = self.textField.text!
+            guard let textFieldText = self.textField.text else {return}
+            self.value?.value = textFieldText
         }).addDisposableTo(disposeBag)
+        
         self.valid = valid
         self.value = value
     }

@@ -83,7 +83,7 @@ extension ViewController:UITableViewDelegate {
         case .PubSub:
             let example = ColorPickerExample()
             self.navigationController?.pushViewController(example, animated: true)
-        case .Form:
+        case .Form: /** Setting up the VIP pattern for the Form stack**/
             let example = FormStackController()
             let interactor = FormStackInteractor()
             let presenter = FormStackPresenter()
