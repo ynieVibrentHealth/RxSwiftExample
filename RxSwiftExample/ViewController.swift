@@ -61,7 +61,7 @@ extension ViewController:UITableViewDataSource {
         case .PubSub:
             cell.textLabel?.text = "Publisher Subscriber, ect..."
         case .Form:
-            cell.textLabel?.text = "Form"
+            cell.textLabel?.text = "Form using VIP Pattern"
         }
         return cell
     }
@@ -85,6 +85,11 @@ extension ViewController:UITableViewDelegate {
             self.navigationController?.pushViewController(example, animated: true)
         case .Form:
             let example = FormStackController()
+            let interactor = FormStackInteractor()
+            let presenter = FormStackPresenter()
+            example.output = interactor
+            interactor.output = presenter
+            presenter.output = example
             self.navigationController?.pushViewController(example, animated: true)
         }
     }

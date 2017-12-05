@@ -10,11 +10,20 @@ import Foundation
 import RxSwift
 
 class NameViewModel {
-    var firstNameValid:Variable<Bool>!
-    var lastNameValid:Variable<Bool>!
+    var firstNameValid:Variable<Bool>
+    var lastNameValid:Variable<Bool>
+    var emailAddressValid:Variable<Bool>
     
-    init(firstNameValid:Bool, lastNameValid:Bool) {
-        self.firstNameValid = Variable(firstNameValid)
-        self.lastNameValid = Variable(lastNameValid)
+    var firstNameValue:Variable<String>
+    var lastNameValue:Variable<String>
+    var emailAddressValue:Variable<String>
+    
+    init(lastName:String, firstName:String, emailAddress:String) {
+        self.firstNameValid = Variable(true)
+        self.lastNameValid = Variable(true)
+        self.firstNameValue = Variable(firstName)
+        self.lastNameValue = Variable(lastName)
+        self.emailAddressValid = Variable(true)
+        self.emailAddressValue = Variable(emailAddress)
     }
 }

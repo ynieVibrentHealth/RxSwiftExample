@@ -15,29 +15,8 @@ class FormTextFieldView:UIView {
     
     fileprivate lazy var disposeBag:DisposeBag = DisposeBag()
     
-    fileprivate lazy var textField:UITextField = {
+    public lazy var textField:UITextField = {
         let textField = UITextField()
-        textField.rx.text
-            .subscribe(onNext: { [weak self] (inputString) in
-                guard let inputString = inputString else {return}
-                var newValue = ""
-                if let isValid = self?.validation?(inputString),
-                    !isValid {
-                    newValue = (self?.errorText)!
-                    self?.valid?.value = false
-                } else {
-                    self?.valid?.value = true
-                }
-                UIView.animate(withDuration: 0.25) {
-                    self?.errorLabel.text = newValue
-                    self?.errorLabel.setNeedsLayout()
-                    self?.setNeedsLayout()
-                    self?.superview?.setNeedsLayout()
-                    self?.errorLabel.layoutSubviews()
-                    self?.layoutSubviews()
-                    self?.superview?.layoutSubviews()
-                }
-            }).addDisposableTo(self.disposeBag)
         textField.autocorrectionType = .no
         self.addSubview(textField)
         return textField
@@ -45,6 +24,7 @@ class FormTextFieldView:UIView {
     
     public var validation:((_ input:String) -> Bool)?
     fileprivate var valid:Variable<Bool>?
+    fileprivate var value:Variable<String>?
     
     fileprivate lazy var errorLabel:UILabel = {
         let label = UILabel()
@@ -60,10 +40,36 @@ class FormTextFieldView:UIView {
         self.addSubview(view)
         return view
     }()
-    public func configure(with placeHolder:String, text:String, valid:Variable<Bool>) {
+    public func configure(placeHolder:String, valid:Variable<Bool>, value:Variable<String>) {
         textField.placeholder = placeHolder
-        textField.text = text
+        textField.text = value.value
+        textField.rx.text
+            .subscribe(onNext: { [weak self] (inputString) in
+                guard let inputString = inputString else {return}
+                var newValue = ""
+                if let isValid = self?.validation?(inputString),
+                    !isValid {
+                    newValue = (self?.errorText)!
+                    self?.valid?.value = false
+                } else {
+                    self?.valid?.value = true
+                }
+                
+                UIView.animate(withDuration: 0.25) {
+                    self?.errorLabel.text = newValue
+                    self?.errorLabel.setNeedsLayout()
+                    self?.setNeedsLayout()
+                    self?.superview?.setNeedsLayout()
+                    self?.errorLabel.layoutSubviews()
+                    self?.layoutSubviews()
+                    self?.superview?.layoutSubviews()
+                }
+            }).addDisposableTo(self.disposeBag)
+        textField.rx.controlEvent([.editingDidEnd]).asObservable().subscribe(onNext: { _ in
+            self.value?.value = self.textField.text!
+        }).addDisposableTo(disposeBag)
         self.valid = valid
+        self.value = value
     }
     
     override func updateConstraints() {
