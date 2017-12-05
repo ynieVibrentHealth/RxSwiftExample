@@ -16,10 +16,16 @@ def shared_pods
     pod 'RxCocoa', '~> 3.4'
 end
 
+def testing_pods
+    pod 'Quick'
+    pod 'Nimble'
+end
+
 target 'RxSwiftExample' do
   shared_pods
 end
 
 target 'RxSwiftExampleTests' do
 	shared_pods
+    testing_pods
 end

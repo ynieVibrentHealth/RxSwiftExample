@@ -12,6 +12,7 @@
 		4C21824F1FD6F38D003EEA33 /* FormStackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21824E1FD6F38D003EEA33 /* FormStackPresenter.swift */; };
 		4C2182511FD6F3C4003EEA33 /* FormStackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2182501FD6F3C4003EEA33 /* FormStackModel.swift */; };
 		4C2182531FD7047E003EEA33 /* HelperFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2182521FD7047E003EEA33 /* HelperFunctions.swift */; };
+		4C2182561FD74DD2003EEA33 /* VIPFromTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2182551FD74DD2003EEA33 /* VIPFromTest.swift */; };
 		4C288D721FD4ADB7008697F6 /* ColorPickerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C288D711FD4ADB7008697F6 /* ColorPickerExample.swift */; };
 		4C288D741FD4AFBC008697F6 /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */; };
 		4C36FEB71FD61EEB008E4C5C /* NameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36FEB61FD61EEB008E4C5C /* NameViewModel.swift */; };
@@ -20,7 +21,6 @@
 		4C5C87D91FD1D80B00BEAD5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C87D71FD1D80B00BEAD5C /* Main.storyboard */; };
 		4C5C87DB1FD1D80B00BEAD5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C87DA1FD1D80B00BEAD5C /* Assets.xcassets */; };
 		4C5C87DE1FD1D80B00BEAD5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C87DC1FD1D80B00BEAD5C /* LaunchScreen.storyboard */; };
-		4C5C87E91FD1D80B00BEAD5C /* RxSwiftExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87E81FD1D80B00BEAD5C /* RxSwiftExampleTests.swift */; };
 		4C5C87F51FD1E34000BEAD5C /* CitySearchExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87F41FD1E34000BEAD5C /* CitySearchExample.swift */; };
 		4C88F7371FD5E291009BC9D5 /* FormStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88F7361FD5E291009BC9D5 /* FormStackController.swift */; };
 		4C88F7391FD5E6F5009BC9D5 /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88F7381FD5E6F5009BC9D5 /* FormTextFieldView.swift */; };
@@ -43,6 +43,7 @@
 		4C21824E1FD6F38D003EEA33 /* FormStackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackPresenter.swift; sourceTree = "<group>"; };
 		4C2182501FD6F3C4003EEA33 /* FormStackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackModel.swift; sourceTree = "<group>"; };
 		4C2182521FD7047E003EEA33 /* HelperFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperFunctions.swift; sourceTree = "<group>"; };
+		4C2182551FD74DD2003EEA33 /* VIPFromTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VIPFromTest.swift; sourceTree = "<group>"; };
 		4C288D711FD4ADB7008697F6 /* ColorPickerExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerExample.swift; sourceTree = "<group>"; };
 		4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		4C36FEB61FD61EEB008E4C5C /* NameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewModel.swift; sourceTree = "<group>"; };
@@ -54,7 +55,6 @@
 		4C5C87DD1FD1D80B00BEAD5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4C5C87DF1FD1D80B00BEAD5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5C87E41FD1D80B00BEAD5C /* RxSwiftExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwiftExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4C5C87E81FD1D80B00BEAD5C /* RxSwiftExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxSwiftExampleTests.swift; sourceTree = "<group>"; };
 		4C5C87EA1FD1D80B00BEAD5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5C87F41FD1E34000BEAD5C /* CitySearchExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchExample.swift; sourceTree = "<group>"; };
 		4C88F7361FD5E291009BC9D5 /* FormStackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackController.swift; sourceTree = "<group>"; };
@@ -92,6 +92,14 @@
 				4C88F7351FD5E27C009BC9D5 /* StackViewVersion */,
 			);
 			path = ErrorOnTextfields;
+			sourceTree = "<group>";
+		};
+		4C2182541FD74DBB003EEA33 /* VIP_Form_Test */ = {
+			isa = PBXGroup;
+			children = (
+				4C2182551FD74DD2003EEA33 /* VIPFromTest.swift */,
+			);
+			path = VIP_Form_Test;
 			sourceTree = "<group>";
 		};
 		4C288D701FD4AD9F008697F6 /* ColorPicker */ = {
@@ -143,7 +151,7 @@
 		4C5C87E71FD1D80B00BEAD5C /* RxSwiftExampleTests */ = {
 			isa = PBXGroup;
 			children = (
-				4C5C87E81FD1D80B00BEAD5C /* RxSwiftExampleTests.swift */,
+				4C2182541FD74DBB003EEA33 /* VIP_Form_Test */,
 				4C5C87EA1FD1D80B00BEAD5C /* Info.plist */,
 			);
 			path = RxSwiftExampleTests;
@@ -399,6 +407,8 @@
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/Nimble/Nimble.framework",
+				"${BUILT_PRODUCTS_DIR}/Quick/Quick.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -407,6 +417,8 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nimble.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Quick.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -439,7 +451,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C5C87E91FD1D80B00BEAD5C /* RxSwiftExampleTests.swift in Sources */,
+				4C2182561FD74DD2003EEA33 /* VIPFromTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
