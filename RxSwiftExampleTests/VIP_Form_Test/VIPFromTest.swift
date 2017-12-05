@@ -21,18 +21,20 @@ class VIPFromTest:QuickSpec {
                 let presenterOutput = ViewImpl()
                 mockInteractor.output = presenter
                 presenter.output = presenterOutput
+                let userDTO = ACUserDTO()
+                userDTO.firstName = "TestFirstName"
+                userDTO.lastName = "TestLastName"
+                userDTO.emailAddress = "aa2000@aa.com"
                 
-                it("Has correct buisness logic", closure: {
-                    let userDTO = ACUserDTO()
-                    userDTO.firstName = "TestFirstName"
-                    userDTO.lastName = "TestLastName"
-                    userDTO.emailAddress = "aa2000@aa.com"
-                    
-                    mockInteractor.callOutput(with: userDTO)
-                    
-                    let outputViewModel = presenterOutput.modelDictionary
+                mockInteractor.callOutput(with: userDTO)
+                
+                let outputViewModel = presenterOutput.modelDictionary
+                
+                it("Models are not empty", closure: {
                     expect(outputViewModel).toNot(beEmpty())
-                    
+                })
+                
+                it("Has correct first name model", closure: {
                     if let firstNameModel = outputViewModel[ProfileFieldKeys.FIRST_NAME] {
                         expect(firstNameModel.value.value == "TestFirstName").to(beTrue())
                         expect(firstNameModel.placeHolder == "First Name").to(beTrue())
@@ -42,7 +44,9 @@ class VIPFromTest:QuickSpec {
                     } else {
                         fail("first name field should not be empty")
                     }
-                    
+                })
+                
+                it("Has correct last name model", closure: {
                     if let lastNameModel = outputViewModel[ProfileFieldKeys.LAST_NAME] {
                         expect(lastNameModel.value.value == "TestLastName").to(beTrue())
                         expect(lastNameModel.placeHolder == "Last Name").to(beTrue())
@@ -56,7 +60,9 @@ class VIPFromTest:QuickSpec {
                     } else {
                         fail("last name field should not be empty")
                     }
-                    
+                })
+                
+                it("Has correct email model", closure: {
                     if let emailAddressModel = outputViewModel[ProfileFieldKeys.EMAIL_ADDRESS] {
                         expect(emailAddressModel.value.value == "aa2000@aa.com").to(beTrue())
                         let isValid = emailAddressModel.validationFunction?("")
@@ -72,7 +78,6 @@ class VIPFromTest:QuickSpec {
                     } else {
                         fail("email address field should not be empty")
                     }
-                    
                 })
             })
             
