@@ -9,21 +9,27 @@
 import Foundation
 import RxSwift
 
-class NameViewModel {
-    var firstNameValid:Variable<Bool>
-    var lastNameValid:Variable<Bool>
-    var emailAddressValid:Variable<Bool>
+class ProfileFieldViewModel {
+    var isValid:Variable<Bool>
+    var value:Variable<String>
+    let placeHolder:String
+    var validationFunction:((_ inputString:String) -> Bool)?
+    var errorMessage:String = ""
     
-    var firstNameValue:Variable<String>
-    var lastNameValue:Variable<String>
-    var emailAddressValue:Variable<String>
-    
-    init(lastName:String, firstName:String, emailAddress:String) {
-        self.firstNameValid = Variable(true)
-        self.lastNameValid = Variable(true)
-        self.firstNameValue = Variable(firstName)
-        self.lastNameValue = Variable(lastName)
-        self.emailAddressValid = Variable(true)
-        self.emailAddressValue = Variable(emailAddress)
+    init(value:String, placeHolder:String, isValid:Bool = true) {
+        self.isValid = Variable(isValid)
+        self.value = Variable(value)
+        self.placeHolder = placeHolder
     }
+    
+    public func setValidationFunction(validationFunction:@escaping ((_ inputString:String) -> Bool)) {
+        self.validationFunction = validationFunction
+    }
+}
+
+struct ProfileFieldKeys {
+    static let FIRST_NAME = "PROFILE_FIELD_FIRST_NAME"
+    static let LAST_NAME = "PROFILE_FIELD_LAST_NAME"
+    static let EMAIL_ADDRESS = "PROFILE_FIELD_EMAIL_ADDRESS"
+    
 }

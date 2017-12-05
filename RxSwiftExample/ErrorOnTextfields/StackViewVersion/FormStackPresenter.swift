@@ -31,8 +31,47 @@ class FormStackPresenter: FormStackPresenterInput {
         let lastName = dto.lastName ?? ""
         let emailAddress = dto.emailAddress ?? ""
         
-        let viewModel = NameViewModel(lastName: lastName, firstName: firstName, emailAddress: emailAddress)
-        let state = FormStackModel.Functions.State.DisplayUser(viewModel: viewModel)
+        let firstNameModel = ProfileFieldViewModel(value: firstName, placeHolder:"First Name")
+        firstNameModel.setValidationFunction { (inputString) -> Bool in
+            if inputString.count < 1 {
+                firstNameModel.errorMessage = "Please enter your first name."
+                return false
+            } else {
+                firstNameModel.errorMessage = ""
+                return true
+            }
+        }
+        
+        let lastNameModel = ProfileFieldViewModel(value: lastName, placeHolder:"Last Name")
+        lastNameModel.setValidationFunction { (inputString) -> Bool in
+            if inputString.count < 1 {
+                lastNameModel.errorMessage = "Please enter your last name."
+                return false
+            } else {
+                lastNameModel.errorMessage = ""
+                return true
+            }
+        }
+        
+        let emailAddressModel = ProfileFieldViewModel(value: emailAddress, placeHolder:"Email Address")
+        emailAddressModel.setValidationFunction { (inputString) -> Bool in
+            if inputString.count < 1 {
+                emailAddressModel.errorMessage = "Please enter your email address"
+                return false
+            } else if !HelperFunctions.isValid(inputString){
+                emailAddressModel.errorMessage = "Please enter a valid email address"
+                return false
+            } else {
+                emailAddressModel.errorMessage = ""
+                return true
+            }
+        }
+        
+        let profileDict:[String:ProfileFieldViewModel] = [ProfileFieldKeys.FIRST_NAME:firstNameModel,
+                                                          ProfileFieldKeys.LAST_NAME:lastNameModel,
+                                                          ProfileFieldKeys.EMAIL_ADDRESS: emailAddressModel]
+        
+        let state = FormStackModel.Functions.State.DisplayUser(modelDictionary: profileDict)
         output?.display(state)
     }
 }

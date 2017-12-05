@@ -35,11 +35,19 @@ class FormStackInteractor: FormStackInteractorInput {
         output?.process(response)
     }
     
-    private func updateUser(with viewModel:NameViewModel) {
+    private func updateUser(with profileDict:[String:ProfileFieldViewModel]) {
         let userDTO = ACUserDTO()
-        userDTO.firstName = viewModel.firstNameValue.value
-        userDTO.lastName = viewModel.lastNameValue.value
-        userDTO.emailAddress = viewModel.emailAddressValue.value
+        if let firstNameModel = profileDict[ProfileFieldKeys.FIRST_NAME] {
+            userDTO.firstName = firstNameModel.value.value
+        }
+        
+        if let lastNameModel = profileDict[ProfileFieldKeys.LAST_NAME] {
+            userDTO.lastName = lastNameModel.value.value
+        }
+        
+        if let emailModel = profileDict[ProfileFieldKeys.EMAIL_ADDRESS] {
+            userDTO.emailAddress = emailModel.value.value
+        }
         
         print("updating user...firstName: \(userDTO.firstName!), \n last name: \(userDTO.lastName!) \n email address: \(userDTO.emailAddress!)")
         let response = FormStackModel.Functions.Response.UpdateUserStatus(status: true)

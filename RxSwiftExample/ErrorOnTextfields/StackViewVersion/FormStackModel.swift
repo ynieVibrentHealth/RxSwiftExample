@@ -12,7 +12,7 @@ struct FormStackModel {
     struct Functions {
         enum Request{
             case GetUser
-            case UpdateUser(viewModel:NameViewModel)
+            case UpdateUser(profileDict:[String:ProfileFieldViewModel])
         }
         
         enum Response {
@@ -21,8 +21,8 @@ struct FormStackModel {
         }
         
         enum State {
-            case DisplayUser(viewModel:NameViewModel)
             case UpdateUserStatus(status:Bool)
+            case DisplayUser(modelDictionary:[String:ProfileFieldViewModel])
         }
     }
 }

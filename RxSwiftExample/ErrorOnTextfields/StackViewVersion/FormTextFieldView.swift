@@ -22,9 +22,7 @@ class FormTextFieldView:UIView {
         return textField
     }()
     
-    public var validation:((_ input:String) -> Bool)?
-    fileprivate var valid:Variable<Bool>?
-    fileprivate var value:Variable<String>?
+    fileprivate var viewModel:ProfileFieldViewModel?
     
     fileprivate lazy var errorLabel:UILabel = {
         let label = UILabel()
@@ -32,7 +30,7 @@ class FormTextFieldView:UIView {
         return label
     }()
     
-    public var errorText:String = ""
+    
     
     fileprivate lazy var dividerLine:UIView = {
         let view = UIView()
@@ -41,12 +39,14 @@ class FormTextFieldView:UIView {
         return view
     }()
     
+    
+    
     /**
      In the configure function, we subscribe the textField using RxCocoa to validate the user input.
      **/
-    public func configure(placeHolder:String, valid:Variable<Bool>, value:Variable<String>) {
-        textField.placeholder = placeHolder
-        textField.text = value.value
+    public func configure(profileViewModel:ProfileFieldViewModel) {
+        textField.placeholder = profileViewModel.placeHolder
+        textField.text = profileViewModel.value.value
         textField.rx.text
             .subscribe(onNext: { [weak self] (inputString) in
                 guard let inputString = inputString else {return}
@@ -54,12 +54,12 @@ class FormTextFieldView:UIView {
                 /**
                  Run the injected validation function. If the validation fails, the error label shows the text that was also injected.
                  **/
-                if let isValid = self?.validation?(inputString),
+                if let isValid = self?.viewModel?.validationFunction?(inputString),
                     !isValid {
-                    newValue = (self?.errorText)!
-                    self?.valid?.value = false
+                    newValue = (self?.viewModel?.errorMessage)!
+                    self?.viewModel?.isValid.value = false
                 } else {
-                    self?.valid?.value = true
+                    self?.viewModel?.isValid.value = true
                 }
                 
                 //Aninmate the error label
@@ -79,11 +79,10 @@ class FormTextFieldView:UIView {
          **/
         textField.rx.controlEvent([.editingDidEnd]).asObservable().subscribe(onNext: { _ in
             guard let textFieldText = self.textField.text else {return}
-            self.value?.value = textFieldText
+            self.viewModel?.value.value = textFieldText
         }).addDisposableTo(disposeBag)
         
-        self.valid = valid
-        self.value = value
+        self.viewModel = profileViewModel
     }
     
     override func updateConstraints() {

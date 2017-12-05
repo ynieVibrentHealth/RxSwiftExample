@@ -46,16 +46,15 @@ class FormStackController:UIViewController {
         let barButton = UIBarButtonItem(title: "Save", style: .plain, target: nil, action: nil)
         barButton.rx.tap
             .subscribe({ [weak self] (tap) in
-                guard let viewModel = self?.nameViewModel else {return}
-                let request = FormStackModel.Functions.Request.UpdateUser(viewModel: viewModel)
+                guard let viewModel = self?.profileDict else {return}
+                let request = FormStackModel.Functions.Request.UpdateUser(profileDict: viewModel)
                 self?.output?.handle(request)
             }).addDisposableTo(self.disposeBag)
         return barButton
     }()
     
     fileprivate lazy var disposeBag = DisposeBag()
-    
-    fileprivate var nameViewModel:NameViewModel?
+    fileprivate lazy var profileDict:[String:ProfileFieldViewModel] = [:]
     
     /**
      Initializing each textField view. The only property that’s injected is the validation function; each textfield has a unique validation to determine if the user input matches what we expect. In addition, it also sets the error message for the case that the user input text is not valid. For instance, if the user enters an email address that isn’t valid, the error message displayed is:
@@ -68,34 +67,16 @@ class FormStackController:UIViewController {
     
     fileprivate lazy var firstNameView:FormTextFieldView = {
         let inputField = FormTextFieldView()
-        inputField.validation = { (inputString) -> Bool in
-            inputField.errorText = "First name is required"
-            return inputString.count > 0
-        }
         return inputField
     }()
     
     fileprivate lazy var lastNameView:FormTextFieldView = {
         let inputField = FormTextFieldView()
-        inputField.validation = { (inputString) -> Bool in
-            inputField.errorText = "Last name is required"
-            return inputString.count > 0
-        }
         return inputField
     }()
     
     fileprivate lazy var emailView:FormTextFieldView = {
        let inputField = FormTextFieldView()
-        inputField.validation = { (inputString) -> Bool in
-            if inputString.count < 1 {
-                inputField.errorText = "Email address is required"
-                return false
-            } else if !HelperFunctions.isValid(inputString) {
-                inputField.errorText = "Please enter a valid email address"
-                return false
-            }
-            return true
-        }
         inputField.textField.autocapitalizationType = .none
         inputField.textField.spellCheckingType = .no
         return inputField
@@ -144,27 +125,38 @@ extension FormStackController:FormStackViewInput {
         }
     }
     
-    private func setupUser(with viewModel:NameViewModel) {
+    private func setupUser(with modelDict:[String:ProfileFieldViewModel]) {
         /**
          Configuring each view with the appropriate properties including placeholder, validity model (a variable type containing a Bool), and the value model.
          **/
-        firstNameView.configure(placeHolder: "First Name", valid: viewModel.firstNameValid, value: viewModel.firstNameValue)
-        lastNameView.configure(placeHolder: "Last Name", valid: viewModel.lastNameValid, value: viewModel.lastNameValue)
-        emailView.configure(placeHolder: "Email Address", valid: viewModel.emailAddressValid, value: viewModel.emailAddressValue)
-        self.nameViewModel = viewModel
+        
+        var observables:[Observable<Bool>] = []
+        if let firstNameModel = modelDict[ProfileFieldKeys.FIRST_NAME] {
+            firstNameView.configure(profileViewModel: firstNameModel)
+            observables.append(firstNameModel.isValid.asObservable())
+        }
+        
+        if let lastNameModel = modelDict[ProfileFieldKeys.LAST_NAME] {
+            lastNameView.configure(profileViewModel: lastNameModel)
+            observables.append(lastNameModel.isValid.asObservable())
+        }
+        
+        if let emailModel = modelDict[ProfileFieldKeys.EMAIL_ADDRESS] {
+            emailView.configure(profileViewModel: emailModel)
+            observables.append(emailModel.isValid.asObservable())
+        }
+        self.profileDict = modelDict
         /**
-        Combining the validation values for all fields
+         Combining the validation values for all fields
          In this function, the observable class is combining the checks of the name fields, and email field are valid and binding them to the state of the save bar button.
          **/
-        Observable.combineLatest(viewModel.firstNameValid.asObservable(),
-                                 viewModel.lastNameValid.asObservable(),
-                                 viewModel.emailAddressValid.asObservable(),
-                                 resultSelector: { (firstName, lastName, emailAddress) -> Bool in
-                                    if firstName, lastName, emailAddress {
-                                        return true
-                                    } else {
-                                        return false
-                                    }
-        }).bind(to: self.barButton.rx.isEnabled).addDisposableTo(self.disposeBag)
+        Observable.combineLatest(observables) { (values) -> Bool in
+            for value in values {
+                if !value {
+                    return false
+                }
+            }
+            return true
+        }.bind(to: self.barButton.rx.isEnabled).addDisposableTo(self.disposeBag)
     }
 }
