@@ -24,6 +24,9 @@ class FormTextFieldView:UIView {
                 if let isValid = self?.validation?(inputString),
                     !isValid {
                     newValue = (self?.errorText)!
+                    self?.valid?.value = false
+                } else {
+                    self?.valid?.value = true
                 }
                 UIView.animate(withDuration: 0.25) {
                     self?.errorLabel.text = newValue
@@ -35,11 +38,13 @@ class FormTextFieldView:UIView {
                     self?.superview?.layoutSubviews()
                 }
             }).addDisposableTo(self.disposeBag)
+        textField.autocorrectionType = .no
         self.addSubview(textField)
         return textField
     }()
     
     public var validation:((_ input:String) -> Bool)?
+    fileprivate var valid:Variable<Bool>?
     
     fileprivate lazy var errorLabel:UILabel = {
         let label = UILabel()
@@ -55,9 +60,10 @@ class FormTextFieldView:UIView {
         self.addSubview(view)
         return view
     }()
-    public func configure(with placeHolder:String, text:String) {
+    public func configure(with placeHolder:String, text:String, valid:Variable<Bool>) {
         textField.placeholder = placeHolder
         textField.text = text
+        self.valid = valid
     }
     
     override func updateConstraints() {

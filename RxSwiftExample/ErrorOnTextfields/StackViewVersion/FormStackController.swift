@@ -27,11 +27,35 @@ class FormStackController:UIViewController {
         return stackView
     }()
     
+    fileprivate lazy var barButton:UIBarButtonItem = {
+        let barButton = UIBarButtonItem(title: "Save", style: .plain, target: nil, action: nil)
+        barButton.rx.tap
+            .subscribe({ (tap) in
+                print(tap)
+            }).addDisposableTo(self.disposeBag)
+        return barButton
+    }()
+    
+    fileprivate lazy var disposeBag = DisposeBag()
+    
+    fileprivate lazy var nameValidationModel:NameViewModel = {
+        let model = NameViewModel(firstNameValid: true, lastNameValid: true)
+        Observable.combineLatest(model.firstNameValid.asObservable(), model.lastNameValid.asObservable(),
+                                 resultSelector: { (firstName, lastName) -> Bool in
+                                    if firstName, lastName {
+                                        return true
+                                    } else {
+                                        return false
+                                    }
+        }).bind(to: self.barButton.rx.isEnabled).addDisposableTo(self.disposeBag)
+        return model
+    }()
+    
     fileprivate lazy var firstNameView:FormTextFieldView = {
         let inputField = FormTextFieldView()
-        inputField.configure(with: "First Name", text: "Yuchen")
+        inputField.configure(with: "First Name", text: "Yuchen", valid: self.nameValidationModel.firstNameValid)
         inputField.validation = { (inputString) -> Bool in
-            inputField.errorText = "First Name is not valid"
+            inputField.errorText = "First name is required"
             return inputString.count > 0
         }
         return inputField
@@ -39,9 +63,9 @@ class FormStackController:UIViewController {
     
     fileprivate lazy var lastNameView:FormTextFieldView = {
         let inputField = FormTextFieldView()
-        inputField.configure(with: "Last Name", text: "Nie")
+        inputField.configure(with: "Last Name", text: "Nie", valid: self.nameValidationModel.lastNameValid)
         inputField.validation = { (inputString) -> Bool in
-            inputField.errorText = "Last Name is not valid"
+            inputField.errorText = "Last name is required"
             return inputString.count > 0
         }
         return inputField
@@ -51,6 +75,7 @@ class FormStackController:UIViewController {
         super.viewDidLoad()
         self.stackContainer.addArrangedSubview(firstNameView)
         self.stackContainer.addArrangedSubview(lastNameView)
+        self.navigationItem.rightBarButtonItem = barButton
     }
     
     override func viewWillLayoutSubviews() {
