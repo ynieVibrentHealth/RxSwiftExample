@@ -14,6 +14,7 @@ import RxCocoa
 class FormTextFieldView:UIView {
     
     fileprivate lazy var disposeBag:DisposeBag = DisposeBag()
+    fileprivate var viewModel:ProfileFieldViewModel?
     
     public lazy var textField:UITextField = {
         let textField = UITextField()
@@ -22,15 +23,11 @@ class FormTextFieldView:UIView {
         return textField
     }()
     
-    fileprivate var viewModel:ProfileFieldViewModel?
-    
     fileprivate lazy var errorLabel:UILabel = {
         let label = UILabel()
         self.addSubview(label)
         return label
     }()
-    
-    
     
     fileprivate lazy var dividerLine:UIView = {
         let view = UIView()
@@ -38,8 +35,6 @@ class FormTextFieldView:UIView {
         self.addSubview(view)
         return view
     }()
-    
-    
     
     /**
      In the configure function, we subscribe the textField using RxCocoa to validate the user input.
