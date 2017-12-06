@@ -28,8 +28,10 @@ class FormStackPresenter: FormStackPresenterInput {
     
     private func generateUserViewModel(dto:ACUserDTO) {
         let firstName = dto.firstName ?? ""
+        let middleInitial = dto.middleInitial ?? ""
         let lastName = dto.lastName ?? ""
-        let emailAddress = dto.emailAddress ?? ""
+        let emailAddress = dto.email ?? ""
+        let phoneNumber = dto.phoneNumber ?? ""
         
         let firstNameModel = ProfileFieldViewModel(value: firstName, placeHolder:"First Name")
         firstNameModel.setValidationFunction { (inputString) -> Bool in
@@ -38,6 +40,17 @@ class FormStackPresenter: FormStackPresenterInput {
                 return false
             } else {
                 firstNameModel.errorMessage = ""
+                return true
+            }
+        }
+        
+        let middleInitialModel = ProfileFieldViewModel(value: middleInitial, placeHolder: "Middle Initial")
+        middleInitialModel.setValidationFunction { (inputString) -> Bool in
+            if inputString.count > 1 {
+                middleInitialModel.errorMessage = "Middle initial should be one character."
+                return false
+            } else {
+                middleInitialModel.errorMessage = ""
                 return true
             }
         }
@@ -67,11 +80,86 @@ class FormStackPresenter: FormStackPresenterInput {
             }
         }
         
-        let profileDict:[String:ProfileFieldViewModel] = [ProfileFieldKeys.FIRST_NAME:firstNameModel,
+        var profileDict:[String:ProfileFieldViewModel] = [ProfileFieldKeys.FIRST_NAME:firstNameModel,
+                                                          ProfileFieldKeys.MIDDLE_INITIAL:middleInitialModel,
                                                           ProfileFieldKeys.LAST_NAME:lastNameModel,
                                                           ProfileFieldKeys.EMAIL_ADDRESS: emailAddressModel]
         
+        if let addressDTO = dto.address {
+            let addressDict = generateAddressViewModels(with: addressDTO)
+            for (key, value) in addressDict {
+                profileDict[key] = value
+            }
+        }
+        
+        
+        
         let state = FormStackModel.Functions.State.DisplayUser(modelDictionary: profileDict)
         output?.display(state)
+    }
+    
+    private func generateAddressViewModels(with addressDTO:ACUserAddressDTO) -> [String:ProfileFieldViewModel]{
+        var addressViewModel:[String: ProfileFieldViewModel] = [:]
+        let streetOne = addressDTO.streetOne ?? ""
+        let streetTwo = addressDTO.streetTwo ?? ""
+        let city = addressDTO.city ?? ""
+        let state = addressDTO.state ?? ""
+        let zip = addressDTO.zip ?? ""
+        
+        let streetOneModel = ProfileFieldViewModel(value: streetOne, placeHolder: "Street")
+        streetOneModel.setValidationFunction { (inputString) -> Bool in
+            if inputString.count < 1 {
+                streetOneModel.errorMessage = "Please enter your street address."
+                return false
+            } else {
+                streetOneModel.errorMessage = ""
+                return true
+            }
+        }
+        addressViewModel[ProfileFieldKeys.STREET_ONE] = streetOneModel
+        
+        let streetTwoModel = ProfileFieldViewModel(value: streetTwo, placeHolder: "Unit #")
+        addressViewModel[ProfileFieldKeys.UNIT] = streetTwoModel
+        
+        let cityModel = ProfileFieldViewModel(value: city, placeHolder: "City")
+        cityModel.setValidationFunction { (inputString) -> Bool in
+            if inputString.count < 1 {
+                cityModel.errorMessage = "Please enter your city."
+                return false
+            } else {
+                cityModel.errorMessage = ""
+                return true
+            }
+        }
+        addressViewModel[ProfileFieldKeys.CITY] = cityModel
+        
+        let stateModel = ProfileFieldViewModel(value: state, placeHolder: "State")
+        stateModel.setValidationFunction { (inputString) -> Bool in
+            if inputString.count < 1 {
+                stateModel.errorMessage = "Please enter your state."
+                return false
+            } else {
+                stateModel.errorMessage = ""
+                return true
+            }
+        }
+        addressViewModel[ProfileFieldKeys.STATE] = stateModel
+        
+        let zipModel = ProfileFieldViewModel(value: zip, placeHolder: "Zipcode")
+        zipModel.setValidationFunction { (inputString) -> Bool in
+            if !inputString.isNumeric {
+                zipModel.errorMessage = "Zipcode should be numbers."
+                return false
+            } else if inputString.count < 1 {
+                zipModel.errorMessage = "Please enter your zipcode."
+                return false
+            } else {
+                zipModel.errorMessage = ""
+                return true
+            }
+        }
+        addressViewModel[ProfileFieldKeys.ZIP] = zipModel
+        
+        return addressViewModel
     }
 }

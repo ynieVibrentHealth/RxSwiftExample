@@ -30,7 +30,14 @@ class ProfileFieldViewModel {
 
 struct ProfileFieldKeys {
     static let FIRST_NAME = "PROFILE_FIELD_FIRST_NAME"
+    static let MIDDLE_INITIAL = "PROFILE_FIELD_MIDDLE_INITIAL"
     static let LAST_NAME = "PROFILE_FIELD_LAST_NAME"
+    static let DATE_OF_BIRTH = "PROFILE_FIELD_DATE_OF_BIRTH"
     static let EMAIL_ADDRESS = "PROFILE_FIELD_EMAIL_ADDRESS"
-    
+    static let PHONE_NUMBER = "PROFILE_FIELD_PHONE_NUMBER"
+    static let STREET_ONE = "PROFILE_FIELD_STREET_ONE"
+    static let UNIT = "PROFILE_FIELD_UNIT"
+    static let CITY = "PROFILE_FIELD_CITY"
+    static let STATE = "PROFILE_FIELD_STATE"
+    static let ZIP = "PROFILE_FIELD_ZIP"
 }

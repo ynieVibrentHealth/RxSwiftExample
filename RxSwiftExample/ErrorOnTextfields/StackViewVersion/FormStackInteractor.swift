@@ -29,7 +29,19 @@ class FormStackInteractor: FormStackInteractorInput {
         let userDTO = ACUserDTO()
         userDTO.firstName = "Yuchen"
         userDTO.lastName = "Nie"
-        userDTO.emailAddress = "ynie@vibrenthealth.com"
+        userDTO.middleInitial = "K"
+        userDTO.email = "ynie@vibrenthealth.com"
+        userDTO.dob = 1231231241351241234
+        userDTO.phoneNumber = "1232412321"
+        
+        let addressDTO = ACUserAddressDTO()
+        addressDTO.streetOne = "1234 North Caleredon Ave."
+        addressDTO.streetTwo = "#1234"
+        addressDTO.city = "Fairfax"
+        addressDTO.state = "Virginia"
+        addressDTO.zip = "22033"
+        
+        
         
         let response = FormStackModel.Functions.Response.GetUser(userDTO: userDTO)
         output?.process(response)
@@ -46,17 +58,53 @@ class FormStackInteractor: FormStackInteractorInput {
         }
         
         if let emailModel = profileDict[ProfileFieldKeys.EMAIL_ADDRESS] {
-            userDTO.emailAddress = emailModel.value.value
+            userDTO.email = emailModel.value.value
         }
         
-        print("updating user...firstName: \(userDTO.firstName!), \n last name: \(userDTO.lastName!) \n email address: \(userDTO.emailAddress!)")
+        print("updating user...firstName: \(userDTO.firstName!), \n last name: \(userDTO.lastName!) \n email address: \(userDTO.email!)")
         let response = FormStackModel.Functions.Response.UpdateUserStatus(status: true)
         output?.process(response)
     }
 }
 
-class ACUserDTO {
-    var firstName:String?
-    var lastName:String?
-    var emailAddress:String?
+class ACUserDTO : NSObject{
+    var activated : Bool?
+    var address : ACUserAddressDTO?
+    var authenticationKey : String?
+    var authorities : Array<String>?
+    var createdBy : String?
+    var createdDate : NSNumber?
+    var dob : NSNumber?
+    var domainId : NSNumber?
+    var email : String?
+    var externalId : String?
+    var failedLoginAttempts : Int?
+    var firstName : String?
+    var id : NSNumber?
+    var inviteCode : String?
+    var lastModifiedBy : String?
+    var lastModifiedDate : NSNumber?
+    var lastName : String?
+    var locked : Bool?
+    var login : String?
+    var middleInitial : String?
+    var password : String?
+    var phoneNumber : String?
+    var profileImageUrl : String?
+    var resetKey : String?
+    var role : String?
+    var unlockTime : NSNumber?
+}
+
+class ACUserAddressDTO : NSObject{
+    var city : String?
+    var id : NSNumber?
+    var latitude : Double?
+    var longitude : Double?
+    var phoneNumber : String?
+    var state : String?
+    var streetOne : String?
+    var streetTwo : String?
+    var unitNumber : String?
+    var zip : String?
 }
