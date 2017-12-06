@@ -9,12 +9,13 @@
 import Foundation
 import RxSwift
 
+
 class ProfileFieldViewModel {
-    var isValid:Variable<Bool>
-    var value:Variable<String>
+    var isValid:Variable<Bool>//Bool to see if user input is valid
+    var value:Variable<String>//Value of user input
     let placeHolder:String
-    var validationFunction:((_ inputString:String) -> Bool)?
-    var errorMessage:String = ""
+    var validationFunction:((_ inputString:String) -> Bool)?//injected function to determine if user input is valid
+    var errorMessage:String = ""//generated error message if user input didn't meet criteria
     
     init(value:String, placeHolder:String, isValid:Bool = true) {
         self.isValid = Variable(isValid)

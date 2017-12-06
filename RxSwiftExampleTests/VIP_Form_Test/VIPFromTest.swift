@@ -16,6 +16,7 @@ class VIPFromTest:QuickSpec {
     override func spec() {
         describe("Testing Presenter") {
             context("Creating View Model", closure: {
+                //wired together mock interactor with real presenter, and presenter's output
                 let mockInteractor = MockInteractor()
                 let presenter = FormStackPresenter()
                 let presenterOutput = ViewImpl()
@@ -81,6 +82,7 @@ class VIPFromTest:QuickSpec {
                 })
             })
             
+            //Created a mock interactor and view
             class MockInteractor {
                 var output:FormStackPresenterInput?
                 public func callOutput(with userDTO:ACUserDTO) {
