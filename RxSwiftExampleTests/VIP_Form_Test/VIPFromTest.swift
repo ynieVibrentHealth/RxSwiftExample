@@ -65,14 +65,19 @@ class VIPFromTest:QuickSpec {
                 
                 it("Has correct email model", closure: {
                     if let emailAddressModel = outputViewModel[ProfileFieldKeys.EMAIL_ADDRESS] {
+                        //Test if the values are set properly
                         expect(emailAddressModel.value.value == "aa2000@aa.com").to(beTrue())
+                        
+                        //Test empty email address
                         let isValid = emailAddressModel.validationFunction?("")
                         expect(isValid).to(beFalse())
                         
+                        //Test email address format
                         let isValid2 = emailAddressModel.validationFunction?("invalidEmailAddress")
                         expect(isValid2).to(beFalse())
                         expect(emailAddressModel.errorMessage == "").to(beFalse())
                         
+                        //Test valid email address
                         let isValid3 = emailAddressModel.validationFunction?("validEmail@aa.com")
                         expect(isValid3).to(beTrue())
                         expect(emailAddressModel.errorMessage == "").to(beTrue())
