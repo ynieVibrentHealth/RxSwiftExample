@@ -72,7 +72,7 @@ class FormTextFieldView:UIView {
         /**
          On editing did end, we subscribe to the editing did end delegate method for a textField. Similar to using the tap function of a button, by using RxCocoa we are able to directly set a function instead of placing it somewhere else the way we would have to using a selector.
          **/
-        textField.rx.controlEvent([.editingDidEnd]).asObservable().subscribe(onNext: { _ in
+        textField.rx.controlEvent([.editingChanged]).asObservable().subscribe(onNext: { _ in
             guard let textFieldText = self.textField.text else {return}
             self.viewModel?.value.value = textFieldText
         }).addDisposableTo(disposeBag)
