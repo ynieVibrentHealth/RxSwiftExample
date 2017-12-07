@@ -15,6 +15,7 @@ def shared_pods
 	pod 'RxSwift', '~> 3.4'
     pod 'RxCocoa', '~> 3.4'
     pod 'ObjectMapper', '2.2.9'
+    pod 'PhoneNumberKit', '1.4.0'
 end
 
 def testing_pods

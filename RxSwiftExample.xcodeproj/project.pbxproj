@@ -11,6 +11,7 @@
 		4C083ACA1FD8C4A0006CF142 /* FormStackHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C083AC91FD8C4A0006CF142 /* FormStackHeaderView.swift */; };
 		4C0BF8FD1FD9D6F500F7E67D /* State.json in Resources */ = {isa = PBXBuildFile; fileRef = 4C0BF8FC1FD9D6F500F7E67D /* State.json */; };
 		4C0BF8FF1FD9D74800F7E67D /* UserProfileStateList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BF8FE1FD9D74800F7E67D /* UserProfileStateList.swift */; };
+		4C0BF9011FD9ED2C00F7E67D /* PhoneNumberTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C0BF9001FD9ED2C00F7E67D /* PhoneNumberTextFieldView.swift */; };
 		4C21824D1FD6F382003EEA33 /* FormStackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21824C1FD6F382003EEA33 /* FormStackInteractor.swift */; };
 		4C21824F1FD6F38D003EEA33 /* FormStackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21824E1FD6F38D003EEA33 /* FormStackPresenter.swift */; };
 		4C2182511FD6F3C4003EEA33 /* FormStackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2182501FD6F3C4003EEA33 /* FormStackModel.swift */; };
@@ -45,6 +46,7 @@
 		4C083AC91FD8C4A0006CF142 /* FormStackHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackHeaderView.swift; sourceTree = "<group>"; };
 		4C0BF8FC1FD9D6F500F7E67D /* State.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = State.json; sourceTree = "<group>"; };
 		4C0BF8FE1FD9D74800F7E67D /* UserProfileStateList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileStateList.swift; sourceTree = "<group>"; };
+		4C0BF9001FD9ED2C00F7E67D /* PhoneNumberTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberTextFieldView.swift; sourceTree = "<group>"; };
 		4C21824C1FD6F382003EEA33 /* FormStackInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackInteractor.swift; sourceTree = "<group>"; };
 		4C21824E1FD6F38D003EEA33 /* FormStackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackPresenter.swift; sourceTree = "<group>"; };
 		4C2182501FD6F3C4003EEA33 /* FormStackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackModel.swift; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 				4C21824E1FD6F38D003EEA33 /* FormStackPresenter.swift */,
 				4C2182501FD6F3C4003EEA33 /* FormStackModel.swift */,
 				4C083AC91FD8C4A0006CF142 /* FormStackHeaderView.swift */,
+				4C0BF9001FD9ED2C00F7E67D /* PhoneNumberTextFieldView.swift */,
 			);
 			path = StackViewVersion;
 			sourceTree = "<group>";
@@ -346,6 +349,7 @@
 				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -355,6 +359,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -425,6 +430,7 @@
 				"${BUILT_PRODUCTS_DIR}/IGListKit/IGListKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/PhoneNumberKit/PhoneNumberKit.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
@@ -436,6 +442,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IGListKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PhoneNumberKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
@@ -458,6 +465,7 @@
 				4C5C87D61FD1D80B00BEAD5C /* ViewController.swift in Sources */,
 				4C88F7371FD5E291009BC9D5 /* FormStackController.swift in Sources */,
 				4C2182511FD6F3C4003EEA33 /* FormStackModel.swift in Sources */,
+				4C0BF9011FD9ED2C00F7E67D /* PhoneNumberTextFieldView.swift in Sources */,
 				4C88F7391FD5E6F5009BC9D5 /* FormTextFieldView.swift in Sources */,
 				4C21824F1FD6F38D003EEA33 /* FormStackPresenter.swift in Sources */,
 				4C2182531FD7047E003EEA33 /* HelperFunctions.swift in Sources */,

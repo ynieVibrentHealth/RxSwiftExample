@@ -32,7 +32,7 @@ class FormStackInteractor: FormStackInteractorInput {
         userDTO.middleInitial = "K"
         userDTO.email = "ynie@vibrenthealth.com"
         userDTO.dob = 932443200000
-        userDTO.phoneNumber = "1232412321"
+        userDTO.phoneNumber = "3348512223"
         
         let addressDTO = ACUserAddressDTO()
         addressDTO.streetOne = "1234 North Caleredon Ave."

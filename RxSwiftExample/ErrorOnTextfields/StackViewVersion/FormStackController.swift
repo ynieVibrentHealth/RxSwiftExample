@@ -10,6 +10,8 @@ import Foundation
 import SnapKit
 import RxSwift
 import RxCocoa
+import PhoneNumberKit
+
 
 protocol FormStackViewInput {
     func display(_ state:FormStackModel.Functions.State)
@@ -114,11 +116,8 @@ class FormStackController:UIViewController {
         return inputField
     }()
     
-    fileprivate lazy var phoneNumberView:FormTextFieldView = {
-        let inputField = FormTextFieldView()
-        inputField.textField.autocapitalizationType = .none
-        inputField.textField.keyboardType = .numberPad
-        inputField.textField.spellCheckingType = .no
+    fileprivate lazy var phoneNumberView:PhoneNumberFormTextFieldView = {
+        let inputField = PhoneNumberFormTextFieldView()
         return inputField
     }()
     
@@ -321,6 +320,11 @@ extension FormStackController:FormStackViewInput {
         if let stateModel = modelDict[ProfileFieldKeys.STATE] {
             stateView.configure(profileViewModel: stateModel)
             observables.append(stateModel.isValid.asObservable())
+            if let selectedStateIndex = UserProfileStateList().states.value.index(where: { (model) -> Bool in
+                return model.name == stateModel.value.value
+            }) {
+                statePicker.selectRow(selectedStateIndex, inComponent: 0, animated: false)
+            }
         }
         
         if let zipModel = modelDict[ProfileFieldKeys.ZIP] {

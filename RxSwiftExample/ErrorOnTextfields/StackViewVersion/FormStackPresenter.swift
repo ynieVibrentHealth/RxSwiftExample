@@ -8,6 +8,7 @@
 
 import Foundation
 import RxSwift
+import PhoneNumberKit
 
 protocol FormStackPresenterInput {
     func process(_ response:FormStackModel.Functions.Response)
@@ -107,8 +108,39 @@ class FormStackPresenter: FormStackPresenterInput {
             }
         }
         
+        if let phoneNumberFormatted = getPhoneNumber(from: phoneNumber) {
+            let phoneNumberKit = PhoneNumberKit()
+            let phoneNumberModel = ProfileFieldViewModel(value: phoneNumberKit.format(phoneNumberFormatted, toType: .national), placeHolder: "Phone Number")
+            phoneNumberModel.setValidationFunction(validationFunction: { (inputString) -> Bool in
+                if inputString.count < 1 {
+                    phoneNumberModel.errorMessage = "Please enter valid phone number"
+                    return false
+                }
+                do {
+                    _ = try phoneNumberKit.parse(inputString, withRegion: "US", ignoreType: true)
+                    phoneNumberModel.errorMessage = ""
+                    return true
+                } catch {
+                    phoneNumberModel.errorMessage = "Please enter valid phone number"
+                    return false
+                }
+            })
+            profileDict[ProfileFieldKeys.PHONE_NUMBER] = phoneNumberModel
+        }
+        
         let state = FormStackModel.Functions.State.DisplayUser(modelDictionary: profileDict)
         output?.display(state)
+    }
+    
+    private func getPhoneNumber(from phoneNumberString:String) -> PhoneNumber? {
+        let phoneNumberKit = PhoneNumberKit()
+        do {
+            let phoneNumber = try phoneNumberKit.parse(phoneNumberString, withRegion: "US", ignoreType: true)
+            return phoneNumber
+        } catch {
+            print("parsing error")
+            return nil
+        }
     }
     
     private func generateAddressViewModels(with addressDTO:ACUserAddressDTO) -> [String:ProfileFieldViewModel]{
