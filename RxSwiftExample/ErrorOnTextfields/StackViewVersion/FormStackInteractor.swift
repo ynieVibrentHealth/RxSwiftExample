@@ -68,32 +68,16 @@ class FormStackInteractor: FormStackInteractorInput {
 }
 
 class ACUserDTO : NSObject{
-    var activated : Bool?
     var address : ACUserAddressDTO?
-    var authenticationKey : String?
-    var authorities : Array<String>?
-    var createdBy : String?
-    var createdDate : NSNumber?
     var dob : NSNumber?
-    var domainId : NSNumber?
     var email : String?
-    var externalId : String?
-    var failedLoginAttempts : Int?
     var firstName : String?
     var id : NSNumber?
-    var inviteCode : String?
-    var lastModifiedBy : String?
-    var lastModifiedDate : NSNumber?
     var lastName : String?
-    var locked : Bool?
     var login : String?
     var middleInitial : String?
-    var password : String?
     var phoneNumber : String?
     var profileImageUrl : String?
-    var resetKey : String?
-    var role : String?
-    var unlockTime : NSNumber?
 }
 
 class ACUserAddressDTO : NSObject{
