@@ -65,6 +65,12 @@ class FormStackController:UIViewController {
 
      **/
     
+    fileprivate lazy var nameHeader:FormStackHeaderView = {
+        let header = FormStackHeaderView()
+        header.configure(headerText: "about you")
+        return header
+    }()
+    
     fileprivate lazy var firstNameView:FormTextFieldView = {
         let inputField = FormTextFieldView()
         return inputField
@@ -75,18 +81,134 @@ class FormStackController:UIViewController {
         return inputField
     }()
     
+    fileprivate lazy var toolBar:UIToolbar = {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action:nil)
+        doneButton.rx.tap.subscribe(onNext: { [weak self] (_) in
+            guard let date = self?.birthDatePicker.date else {return}
+            self?.dateOfBirthView.textField.text = HelperFunctions.dateString(from: date)
+            self?.dateOfBirthView.textField.resignFirstResponder()
+        }).addDisposableTo(self.disposeBag)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:nil)
+        cancelButton.rx.tap.subscribe(onNext: { [weak self] (_) in
+            self?.dateOfBirthView.textField.resignFirstResponder()
+        }).addDisposableTo(self.disposeBag)
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        return toolBar
+    }()
+    
+    fileprivate lazy var birthDatePicker:UIDatePicker = {
+        let datePicker = UIDatePicker()
+        datePicker.datePickerMode = UIDatePickerMode.date
+        return datePicker
+    }()
+    
+    fileprivate lazy var dateOfBirthView:FormTextFieldView = {
+        let inputField = FormTextFieldView()
+        inputField.textField.inputView = self.birthDatePicker
+        inputField.textField.inputAccessoryView = self.toolBar
+        return inputField
+    }()
+    
+    fileprivate lazy var contactHeader:FormStackHeaderView = {
+        let header = FormStackHeaderView()
+        header.configure(headerText: "Contact Information")
+        return header
+    }()
+    
     fileprivate lazy var emailView:FormTextFieldView = {
        let inputField = FormTextFieldView()
+        inputField.textField.autocapitalizationType = .none
+        inputField.textField.keyboardType = .emailAddress
+        inputField.textField.spellCheckingType = .no
+        return inputField
+    }()
+    
+    fileprivate lazy var phoneNumberView:FormTextFieldView = {
+        let inputField = FormTextFieldView()
+        inputField.textField.autocapitalizationType = .none
+        inputField.textField.keyboardType = .numberPad
+        inputField.textField.spellCheckingType = .no
+        return inputField
+    }()
+    
+    fileprivate lazy var addressHeader:FormStackHeaderView = {
+        let header = FormStackHeaderView()
+        header.configure(headerText: "Address")
+        return header
+    }()
+    
+    fileprivate lazy var streetView :FormTextFieldView = {
+        let inputField = FormTextFieldView()
         inputField.textField.autocapitalizationType = .none
         inputField.textField.spellCheckingType = .no
         return inputField
     }()
     
+    fileprivate lazy var unitView:FormTextFieldView = {
+        let inputField = FormTextFieldView()
+        inputField.textField.autocapitalizationType = .none
+        inputField.textField.spellCheckingType = .no
+        return inputField
+    }()
+    
+    fileprivate lazy var cityView:FormTextFieldView = {
+        let inputField = FormTextFieldView()
+        inputField.textField.autocapitalizationType = .none
+        inputField.textField.spellCheckingType = .no
+        return inputField
+    }()
+    
+    fileprivate lazy var stateView:FormTextFieldView = {
+        let inputField = FormTextFieldView()
+        inputField.textField.autocapitalizationType = .none
+        inputField.textField.spellCheckingType = .no
+        return inputField
+    }()
+    
+    fileprivate lazy var zipView:FormTextFieldView = {
+        let inputField = FormTextFieldView()
+        inputField.textField.autocapitalizationType = .none
+        inputField.textField.spellCheckingType = .no
+        return inputField
+    }()
+    
+    fileprivate lazy var hpoHeader:FormStackHeaderView = {
+        let header = FormStackHeaderView()
+        header.configure(headerText: "Health provider organization")
+        return header
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.stackContainer.addArrangedSubview(nameHeader)
         self.stackContainer.addArrangedSubview(firstNameView)
         self.stackContainer.addArrangedSubview(lastNameView)
+        self.stackContainer.addArrangedSubview(dateOfBirthView)
+        
+        self.stackContainer.addArrangedSubview(contactHeader)
         self.stackContainer.addArrangedSubview(emailView)
+        self.stackContainer.addArrangedSubview(phoneNumberView)
+        
+        self.stackContainer.addArrangedSubview(addressHeader)
+        self.stackContainer.addArrangedSubview(streetView)
+        self.stackContainer.addArrangedSubview(unitView)
+        self.stackContainer.addArrangedSubview(cityView)
+        self.stackContainer.addArrangedSubview(stateView)
+        self.stackContainer.addArrangedSubview(zipView)
+        
+        self.stackContainer.addArrangedSubview(hpoHeader)
+        
         self.navigationItem.rightBarButtonItem = barButton
         
         //sending request to interactor
@@ -141,10 +263,47 @@ extension FormStackController:FormStackViewInput {
             observables.append(lastNameModel.isValid.asObservable())
         }
         
+        if let dateOfBirthModel = modelDict[ProfileFieldKeys.DATE_OF_BIRTH] {
+            dateOfBirthView.configure(profileViewModel: dateOfBirthModel)
+            birthDatePicker.date = HelperFunctions.date(from: dateOfBirthModel.value.value)
+            observables.append(dateOfBirthModel.isValid.asObservable())
+        }
+        
         if let emailModel = modelDict[ProfileFieldKeys.EMAIL_ADDRESS] {
             emailView.configure(profileViewModel: emailModel)
             observables.append(emailModel.isValid.asObservable())
         }
+        
+        if let phoneModel = modelDict[ProfileFieldKeys.PHONE_NUMBER] {
+            phoneNumberView.configure(profileViewModel: phoneModel)
+            observables.append(phoneModel.isValid.asObservable())
+        }
+        
+        if let streetModel = modelDict[ProfileFieldKeys.STREET_ONE] {
+            streetView.configure(profileViewModel: streetModel)
+            observables.append(streetModel.isValid.asObservable())
+        }
+        
+        if let unitModel = modelDict[ProfileFieldKeys.UNIT] {
+            unitView.configure(profileViewModel: unitModel)
+            observables.append(unitModel.isValid.asObservable())
+        }
+        
+        if let cityModel = modelDict[ProfileFieldKeys.CITY] {
+            cityView.configure(profileViewModel: cityModel)
+            observables.append(cityModel.isValid.asObservable())
+        }
+        
+        if let stateModel = modelDict[ProfileFieldKeys.STATE] {
+            stateView.configure(profileViewModel: stateModel)
+            observables.append(stateModel.isValid.asObservable())
+        }
+        
+        if let zipModel = modelDict[ProfileFieldKeys.ZIP] {
+            zipView.configure(profileViewModel: zipModel)
+            observables.append(zipModel.isValid.asObservable())
+        }
+
         self.profileDict = modelDict
         /**
          Combining the validation values for all fields

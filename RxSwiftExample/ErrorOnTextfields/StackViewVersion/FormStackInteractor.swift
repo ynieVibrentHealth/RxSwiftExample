@@ -31,7 +31,7 @@ class FormStackInteractor: FormStackInteractorInput {
         userDTO.lastName = "Nie"
         userDTO.middleInitial = "K"
         userDTO.email = "ynie@vibrenthealth.com"
-        userDTO.dob = 1231231241351241234
+        userDTO.dob = 932443200000
         userDTO.phoneNumber = "1232412321"
         
         let addressDTO = ACUserAddressDTO()
@@ -41,7 +41,7 @@ class FormStackInteractor: FormStackInteractorInput {
         addressDTO.state = "Virginia"
         addressDTO.zip = "22033"
         
-        
+        userDTO.address = addressDTO
         
         let response = FormStackModel.Functions.Response.GetUser(userDTO: userDTO)
         output?.process(response)

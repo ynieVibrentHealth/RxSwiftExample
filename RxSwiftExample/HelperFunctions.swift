@@ -15,6 +15,28 @@ struct HelperFunctions {
         let emailTest = NSPredicate(format:"SELF MATCHES[c] %@", emailRegEx)
         return emailTest.evaluate(with: email)
     }
+    static func dateString(from millisecs:NSNumber) -> String{
+        let dob = Date(timeIntervalSince1970: TimeInterval(millisecs)/1000)//dates are in 1/1000 seconds
+        return self.dateString(from: dob)
+    }
+    
+    static func dateString(from date:Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
+    static func date(from inputString:String) -> Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .short
+        if let outputDate = dateFormatter.date(from: inputString) {
+            return outputDate
+        } else {
+            return Date()
+        }
+    }
+
 }
 
 extension String {

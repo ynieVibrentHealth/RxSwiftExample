@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4176CED001CB1761CDDCCC2B /* Pods_RxSwiftExampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 924B5E37CB69F85E3427CC43 /* Pods_RxSwiftExampleTests.framework */; };
+		4C083ACA1FD8C4A0006CF142 /* FormStackHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C083AC91FD8C4A0006CF142 /* FormStackHeaderView.swift */; };
 		4C21824D1FD6F382003EEA33 /* FormStackInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21824C1FD6F382003EEA33 /* FormStackInteractor.swift */; };
 		4C21824F1FD6F38D003EEA33 /* FormStackPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C21824E1FD6F38D003EEA33 /* FormStackPresenter.swift */; };
 		4C2182511FD6F3C4003EEA33 /* FormStackModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C2182501FD6F3C4003EEA33 /* FormStackModel.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1CEEF0CB16B2B82433467DA7 /* Pods-RxSwiftExampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExampleTests/Pods-RxSwiftExampleTests.debug.xcconfig"; sourceTree = "<group>"; };
+		4C083AC91FD8C4A0006CF142 /* FormStackHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackHeaderView.swift; sourceTree = "<group>"; };
 		4C21824C1FD6F382003EEA33 /* FormStackInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackInteractor.swift; sourceTree = "<group>"; };
 		4C21824E1FD6F38D003EEA33 /* FormStackPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackPresenter.swift; sourceTree = "<group>"; };
 		4C2182501FD6F3C4003EEA33 /* FormStackModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackModel.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				4C21824C1FD6F382003EEA33 /* FormStackInteractor.swift */,
 				4C21824E1FD6F38D003EEA33 /* FormStackPresenter.swift */,
 				4C2182501FD6F3C4003EEA33 /* FormStackModel.swift */,
+				4C083AC91FD8C4A0006CF142 /* FormStackHeaderView.swift */,
 			);
 			path = StackViewVersion;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				4C5C87D41FD1D80B00BEAD5C /* AppDelegate.swift in Sources */,
 				4C36FEB71FD61EEB008E4C5C /* NameViewModel.swift in Sources */,
 				4C5C87F51FD1E34000BEAD5C /* CitySearchExample.swift in Sources */,
+				4C083ACA1FD8C4A0006CF142 /* FormStackHeaderView.swift in Sources */,
 				4C288D741FD4AFBC008697F6 /* CircleViewModel.swift in Sources */,
 				4C21824D1FD6F382003EEA33 /* FormStackInteractor.swift in Sources */,
 			);

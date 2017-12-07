@@ -32,6 +32,7 @@ class FormStackPresenter: FormStackPresenterInput {
         let lastName = dto.lastName ?? ""
         let emailAddress = dto.email ?? ""
         let phoneNumber = dto.phoneNumber ?? ""
+        let birthDate = dto.dob ?? 0
         
         let firstNameModel = ProfileFieldViewModel(value: firstName, placeHolder:"First Name")
         firstNameModel.setValidationFunction { (inputString) -> Bool in
@@ -66,6 +67,19 @@ class FormStackPresenter: FormStackPresenterInput {
             }
         }
         
+
+        
+        let dobModel = ProfileFieldViewModel(value: HelperFunctions.dateString(from: birthDate), placeHolder: "Date of Birth")
+        dobModel.setValidationFunction { (inputString) -> Bool in
+            if inputString.count < 1 {
+                lastNameModel.errorMessage = "Please select your birthdate."
+                return false
+            } else {
+                lastNameModel.errorMessage = ""
+                return true
+            }
+        }
+        
         let emailAddressModel = ProfileFieldViewModel(value: emailAddress, placeHolder:"Email Address")
         emailAddressModel.setValidationFunction { (inputString) -> Bool in
             if inputString.count < 1 {
@@ -83,6 +97,7 @@ class FormStackPresenter: FormStackPresenterInput {
         var profileDict:[String:ProfileFieldViewModel] = [ProfileFieldKeys.FIRST_NAME:firstNameModel,
                                                           ProfileFieldKeys.MIDDLE_INITIAL:middleInitialModel,
                                                           ProfileFieldKeys.LAST_NAME:lastNameModel,
+                                                          ProfileFieldKeys.DATE_OF_BIRTH:dobModel,
                                                           ProfileFieldKeys.EMAIL_ADDRESS: emailAddressModel]
         
         if let addressDTO = dto.address {
@@ -91,8 +106,6 @@ class FormStackPresenter: FormStackPresenterInput {
                 profileDict[key] = value
             }
         }
-        
-        
         
         let state = FormStackModel.Functions.State.DisplayUser(modelDictionary: profileDict)
         output?.display(state)
