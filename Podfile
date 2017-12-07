@@ -14,6 +14,7 @@ def shared_pods
 	pod 'SnapKit', '~> 3.2.0'
 	pod 'RxSwift', '~> 3.4'
     pod 'RxCocoa', '~> 3.4'
+    pod 'ObjectMapper', '2.2.9'
 end
 
 def testing_pods

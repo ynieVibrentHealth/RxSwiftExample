@@ -81,32 +81,6 @@ class FormStackController:UIViewController {
         return inputField
     }()
     
-    fileprivate lazy var toolBar:UIToolbar = {
-        let toolBar = UIToolbar()
-        toolBar.barStyle = .default
-        toolBar.isTranslucent = true
-        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
-        toolBar.sizeToFit()
-        
-        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action:nil)
-        doneButton.rx.tap.subscribe(onNext: { [weak self] (_) in
-            guard let date = self?.birthDatePicker.date else {return}
-            self?.dateOfBirthView.textField.text = HelperFunctions.dateString(from: date)
-            self?.dateOfBirthView.textField.resignFirstResponder()
-        }).addDisposableTo(self.disposeBag)
-        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        
-        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:nil)
-        cancelButton.rx.tap.subscribe(onNext: { [weak self] (_) in
-            self?.dateOfBirthView.textField.resignFirstResponder()
-        }).addDisposableTo(self.disposeBag)
-        
-        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
-        toolBar.isUserInteractionEnabled = true
-        
-        return toolBar
-    }()
-    
     fileprivate lazy var birthDatePicker:UIDatePicker = {
         let datePicker = UIDatePicker()
         datePicker.datePickerMode = UIDatePickerMode.date
@@ -116,7 +90,13 @@ class FormStackController:UIViewController {
     fileprivate lazy var dateOfBirthView:FormTextFieldView = {
         let inputField = FormTextFieldView()
         inputField.textField.inputView = self.birthDatePicker
-        inputField.textField.inputAccessoryView = self.toolBar
+        inputField.textField.inputAccessoryView = self.getToolBar(cancelAction: { [weak self] in
+            self?.dateOfBirthView.textField.resignFirstResponder()
+            }, doneAction: { [weak self] in
+                guard let date = self?.birthDatePicker.date else {return}
+                self?.dateOfBirthView.textField.text = HelperFunctions.dateString(from: date)
+                self?.dateOfBirthView.textField.resignFirstResponder()
+        })
         return inputField
     }()
     
@@ -169,10 +149,30 @@ class FormStackController:UIViewController {
         return inputField
     }()
     
+    fileprivate lazy var statePicker:UIPickerView = {
+        let pickerView = UIPickerView()
+        let states = UserProfileStateList.init().states
+        let function = states.asObservable().bind(to: pickerView.rx.itemTitles)
+        function({(index, stateModel) -> String in
+            return stateModel.name
+        }).addDisposableTo(self.disposeBag)
+        return pickerView
+    }()
+    
     fileprivate lazy var stateView:FormTextFieldView = {
         let inputField = FormTextFieldView()
         inputField.textField.autocapitalizationType = .none
         inputField.textField.spellCheckingType = .no
+        inputField.textField.inputView = self.statePicker
+        inputField.textField.inputAccessoryView = self.getToolBar(cancelAction: { [weak self] in
+            self?.stateView.textField.resignFirstResponder()
+            }, doneAction: { [weak self] in
+                guard let stateIndex = self?.statePicker.selectedRow(inComponent: 0),
+                let stateName = UserProfileStateList.init().states.value[stateIndex].name else {return}
+                
+                self?.stateView.textField.text = stateName
+                self?.stateView.textField.resignFirstResponder()
+        })
         return inputField
     }()
     
@@ -226,6 +226,30 @@ class FormStackController:UIViewController {
             make.width.equalTo(UIScreen.main.bounds.width)
         }
         super.viewWillLayoutSubviews()
+    }
+    
+    func getToolBar(cancelAction:@escaping (() -> Void), doneAction:@escaping (() -> Void))-> UIToolbar {
+        let toolBar = UIToolbar()
+        toolBar.barStyle = .default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = UIColor(red: 92/255, green: 216/255, blue: 255/255, alpha: 1)
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action:nil)
+        doneButton.rx.tap.subscribe(onNext: { (_) in
+            doneAction()
+        }).addDisposableTo(self.disposeBag)
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        
+        let cancelButton = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action:nil)
+        cancelButton.rx.tap.subscribe(onNext: { (_) in
+            cancelAction()
+        }).addDisposableTo(self.disposeBag)
+        
+        toolBar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+        toolBar.isUserInteractionEnabled = true
+        
+        return toolBar
     }
 }
 

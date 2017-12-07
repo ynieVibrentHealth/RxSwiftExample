@@ -1,0 +1,416 @@
+
+[
+ {
+ "code" : "PIIState_AL",
+ "zipCode" : "35201",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Alabama"
+ },
+ {
+ "code" : "PIIState_AK",
+ "zipCode" : "99501",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Alaska"
+ },
+ {
+ "code" : "PIIState_AS",
+ "zipCode" : "96799",
+ "hasFlag" : false,
+ "country" : "US",
+ "name" : "American Samoa"
+ },
+ {
+ "code" : "PIIState_AZ",
+ "zipCode" : "85001",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Arizona"
+ },
+ {
+ "code" : "PIIState_AR",
+ "zipCode" : "72201",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Arkansas"
+ },
+ {
+ "code" : "PIIState_CA",
+ "zipCode" : "90001",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "California"
+ },
+ {
+ "code" : "PIIState_CO",
+ "zipCode" : "80201",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Colorado"
+ },
+ {
+ "code" : "PIIState_CT",
+ "zipCode" : "06101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Connecticut"
+ },
+ {
+ "code" : "PIIState_DC",
+ "zipCode" : "20001",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "District Of Columbia"
+ },
+ {
+ "code" : "PIIState_DE",
+ "zipCode" : "19901",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Delaware"
+ },
+ {
+ "code" : "PIIState_FM",
+ "zipCode" : "99999",
+ "hasFlag" : false,
+ "country" : "US",
+ "name" : "Federated States of Micronesia"
+ },
+ {
+ "code" : "PIIState_FL",
+ "zipCode" : "33101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Florida"
+ },
+ {
+ "code" : "PIIState_GA",
+ "zipCode" : "30301",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Georgia"
+ },
+ {
+ "code" : "PIIState_GU",
+ "zipCode" : "96913",
+ "hasFlag" : false,
+ "country" : "US",
+ "name" : "Guam"
+ },
+ {
+ "code" : "PIIState_HI",
+ "zipCode" : "96813",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Hawaii"
+ },
+ {
+ "code" : "PIIState_ID",
+ "zipCode" : "83701",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Idaho"
+ },
+ {
+ "code" : "PIIState_IL",
+ "zipCode" : "60601",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Illinois"
+ },
+ {
+ "code" : "PIIState_IN",
+ "zipCode" : "46201",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Indiana"
+ },
+ {
+ "code" : "PIIState_IA",
+ "zipCode" : "50301",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Iowa"
+ },
+ {
+ "code" : "PIIState_KS",
+ "zipCode" : "66601",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Kansas"
+ },
+ {
+ "code" : "PIIState_KY",
+ "zipCode" : "40502",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Kentucky"
+ },
+ {
+ "code" : "PIIState_LA",
+ "zipCode" : "70112",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Louisiana"
+ },
+ {
+ "code" : "PIIState_ME",
+ "zipCode" : "04101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Maine"
+ },
+ {
+ "code" : "PIIState_MH",
+ "zipCode" : "96960",
+ "hasFlag" : false,
+ "country" : "US",
+ "name" : "Marshall Islands"
+ },
+ {
+ "code" : "PIIState_MD",
+ "zipCode" : "21201",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Maryland"
+ },
+ {
+ "code" : "PIIState_MA",
+ "zipCode" : "02108",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Massachusetts"
+ },
+ {
+ "code" : "PIIState_MI",
+ "zipCode" : "48201",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Michigan"
+ },
+ {
+ "code" : "PIIState_MN",
+ "zipCode" : "55401",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Minnesota"
+ },
+ {
+ "code" : "PIIState_MS",
+ "zipCode" : "39201",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Mississippi"
+ },
+ {
+ "code" : "PIIState_MO",
+ "zipCode" : "63101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Missouri"
+ },
+ {
+ "code" : "PIIState_MT",
+ "zipCode" : "59101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Montana"
+ },
+ {
+ "code" : "PIIState_NE",
+ "zipCode" : "68501",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Nebraska"
+ },
+ {
+ "code" : "PIIState_NV",
+ "zipCode" : "89101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Nevada"
+ },
+ {
+ "code" : "PIIState_NH",
+ "zipCode" : "03301",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "New Hampshire"
+ },
+ {
+ "code" : "PIIState_NJ",
+ "zipCode" : "07101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "New Jersey"
+ },
+ {
+ "code" : "PIIState_NM",
+ "zipCode" : "87101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "New Mexico"
+ },
+ {
+ "code" : "PIIState_NY",
+ "zipCode" : "10001",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "New York"
+ },
+ {
+ "code" : "PIIState_NC",
+ "zipCode" : "27601",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "North Carolina"
+ },
+ {
+ "code" : "PIIState_MP",
+ "zipCode" : "96950",
+ "hasFlag" : false,
+ "country" : "US",
+ "name" : "North Marianas Islands"
+ },
+ {
+ "code" : "PIIState_ND",
+ "zipCode" : "58501",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "North Dakota"
+ },
+ {
+ "code" : "PIIState_OH",
+ "zipCode" : "44101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Ohio"
+ },
+ {
+ "code" : "PIIState_OK",
+ "zipCode" : "73101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Oklahoma"
+ },
+ {
+ "code" : "PIIState_OR",
+ "zipCode" : "97201",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Oregon"
+ },
+ {
+ "code" : "PIIState_PW",
+ "zipCode" : "96940",
+ "hasFlag" : false,
+ "country" : "US",
+ "name" : "Palau"
+ },
+ {
+ "code" : "PIIState_PA",
+ "zipCode" : "19019",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Pennsylvania"
+ },
+ {
+ "code" : "PIIState_PR",
+ "zipCode" : "00901",
+ "hasFlag" : false,
+ "country" : "US",
+ "name" : "Puerto Rico"
+ },
+ {
+ "code" : "PIIState_RI",
+ "zipCode" : "02901",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Rhode Island"
+ },
+ {
+ "code" : "PIIState_SC",
+ "zipCode" : "29401",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "South Carolina"
+ },
+ {
+ "code" : "PIIState_SD",
+ "zipCode" : "57101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "South Dakota"
+ },
+ {
+ "code" : "PIIState_TN",
+ "zipCode" : "38101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Tennessee"
+ },
+ {
+ "code" : "PIIState_TX",
+ "zipCode" : "75270",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Texas"
+ },
+ {
+ "code" : "PIIState_UT",
+ "zipCode" : "84101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Utah"
+ },
+ {
+ "code" : "PIIState_VT",
+ "zipCode" : "05401",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Vermont"
+ },
+ {
+ "code" : "PIIState_VA",
+ "zipCode" : "23218",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Virginia"
+ },
+ {
+ "code" : "PIIState_VI",
+ "zipCode" : "00801",
+ "hasFlag" : false,
+ "country" : "US",
+ "name" : "Virgin Islands"
+ },
+ {
+ "code" : "PIIState_WA",
+ "zipCode" : "98101",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Washington"
+ },
+ {
+ "code" : "PIIState_WV",
+ "zipCode" : "25301",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "West Virginia"
+ },
+ {
+ "code" : "PIIState_WI",
+ "zipCode" : "53201",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Wisconsin"
+ },
+ {
+ "code" : "PIIState_WY",
+ "zipCode" : "82001",
+ "hasFlag" : true,
+ "country" : "US",
+ "name" : "Wyoming"
+ }
+ ]
