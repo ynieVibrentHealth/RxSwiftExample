@@ -20,6 +20,7 @@
 		4C288D721FD4ADB7008697F6 /* ColorPickerExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C288D711FD4ADB7008697F6 /* ColorPickerExample.swift */; };
 		4C288D741FD4AFBC008697F6 /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */; };
 		4C36FEB71FD61EEB008E4C5C /* NameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36FEB61FD61EEB008E4C5C /* NameViewModel.swift */; };
+		4C54B4901FE066DC0045DCFC /* UserPreferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C54B48F1FE066DC0045DCFC /* UserPreferenceModel.swift */; };
 		4C5C87D41FD1D80B00BEAD5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87D31FD1D80B00BEAD5C /* AppDelegate.swift */; };
 		4C5C87D61FD1D80B00BEAD5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87D51FD1D80B00BEAD5C /* ViewController.swift */; };
 		4C5C87D91FD1D80B00BEAD5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C87D71FD1D80B00BEAD5C /* Main.storyboard */; };
@@ -28,6 +29,12 @@
 		4C5C87F51FD1E34000BEAD5C /* CitySearchExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87F41FD1E34000BEAD5C /* CitySearchExample.swift */; };
 		4C88F7371FD5E291009BC9D5 /* FormStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88F7361FD5E291009BC9D5 /* FormStackController.swift */; };
 		4C88F7391FD5E6F5009BC9D5 /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88F7381FD5E6F5009BC9D5 /* FormTextFieldView.swift */; };
+		4CB816871FE0362800EB0818 /* UserPreferencesStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB816861FE0362800EB0818 /* UserPreferencesStackContainer.swift */; };
+		4CB816891FE0511400EB0818 /* UserPreferencesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB816881FE0511400EB0818 /* UserPreferencesPresenter.swift */; };
+		4CB8168B1FE0511E00EB0818 /* UserPreferencesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8168A1FE0511E00EB0818 /* UserPreferencesInteractor.swift */; };
+		4CB8168D1FE0512A00EB0818 /* UserPreferencesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8168C1FE0512A00EB0818 /* UserPreferencesViewModel.swift */; };
+		4CB8168F1FE05AB800EB0818 /* UserPreferencesTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8168E1FE05AB800EB0818 /* UserPreferencesTextFieldView.swift */; };
+		4CB816911FE05F8000EB0818 /* UserPreferencesHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB816901FE05F8000EB0818 /* UserPreferencesHeaderView.swift */; };
 		D3611E68258CE28381D52709 /* Pods_RxSwiftExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD23EA40416875DBABD2838B /* Pods_RxSwiftExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +62,7 @@
 		4C288D711FD4ADB7008697F6 /* ColorPickerExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPickerExample.swift; sourceTree = "<group>"; };
 		4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		4C36FEB61FD61EEB008E4C5C /* NameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewModel.swift; sourceTree = "<group>"; };
+		4C54B48F1FE066DC0045DCFC /* UserPreferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPreferenceModel.swift; path = RxSwiftExample/UserPreferences/UserPreferenceModel.swift; sourceTree = SOURCE_ROOT; };
 		4C5C87D01FD1D80B00BEAD5C /* RxSwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5C87D31FD1D80B00BEAD5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C5C87D51FD1D80B00BEAD5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,6 +75,12 @@
 		4C5C87F41FD1E34000BEAD5C /* CitySearchExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchExample.swift; sourceTree = "<group>"; };
 		4C88F7361FD5E291009BC9D5 /* FormStackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackController.swift; sourceTree = "<group>"; };
 		4C88F7381FD5E6F5009BC9D5 /* FormTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldView.swift; sourceTree = "<group>"; };
+		4CB816861FE0362800EB0818 /* UserPreferencesStackContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesStackContainer.swift; sourceTree = "<group>"; };
+		4CB816881FE0511400EB0818 /* UserPreferencesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesPresenter.swift; sourceTree = "<group>"; };
+		4CB8168A1FE0511E00EB0818 /* UserPreferencesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesInteractor.swift; sourceTree = "<group>"; };
+		4CB8168C1FE0512A00EB0818 /* UserPreferencesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesViewModel.swift; sourceTree = "<group>"; };
+		4CB8168E1FE05AB800EB0818 /* UserPreferencesTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesTextFieldView.swift; sourceTree = "<group>"; };
+		4CB816901FE05F8000EB0818 /* UserPreferencesHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesHeaderView.swift; sourceTree = "<group>"; };
 		770B95DE3184E597BFE880D5 /* Pods-RxSwiftExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExample/Pods-RxSwiftExample.debug.xcconfig"; sourceTree = "<group>"; };
 		7D3C7018E6A96AB8C3858BA7 /* Pods-RxSwiftExampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExampleTests/Pods-RxSwiftExampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		81B747F9BA593B0125E00612 /* Pods-RxSwiftExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxSwiftExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxSwiftExample/Pods-RxSwiftExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -152,6 +166,7 @@
 		4C5C87D21FD1D80B00BEAD5C /* RxSwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				4CB816831FE01F0200EB0818 /* UserPreferences */,
 				4C2182521FD7047E003EEA33 /* HelperFunctions.swift */,
 				4C1C974C1FD5B27800EC4D0F /* ErrorOnTextfields */,
 				4C288D701FD4AD9F008697F6 /* ColorPicker */,
@@ -196,6 +211,28 @@
 				4C0BF9001FD9ED2C00F7E67D /* PhoneNumberTextFieldView.swift */,
 			);
 			path = StackViewVersion;
+			sourceTree = "<group>";
+		};
+		4CB816831FE01F0200EB0818 /* UserPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				4CB816921FE05F8400EB0818 /* Views */,
+				4CB816861FE0362800EB0818 /* UserPreferencesStackContainer.swift */,
+				4CB816881FE0511400EB0818 /* UserPreferencesPresenter.swift */,
+				4CB8168A1FE0511E00EB0818 /* UserPreferencesInteractor.swift */,
+				4CB8168C1FE0512A00EB0818 /* UserPreferencesViewModel.swift */,
+				4C54B48F1FE066DC0045DCFC /* UserPreferenceModel.swift */,
+			);
+			path = UserPreferences;
+			sourceTree = "<group>";
+		};
+		4CB816921FE05F8400EB0818 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4CB8168E1FE05AB800EB0818 /* UserPreferencesTextFieldView.swift */,
+				4CB816901FE05F8000EB0818 /* UserPreferencesHeaderView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		95C3C41882680C94123AB05C /* Frameworks */ = {
@@ -463,17 +500,24 @@
 			files = (
 				4C288D721FD4ADB7008697F6 /* ColorPickerExample.swift in Sources */,
 				4C5C87D61FD1D80B00BEAD5C /* ViewController.swift in Sources */,
+				4CB816891FE0511400EB0818 /* UserPreferencesPresenter.swift in Sources */,
 				4C88F7371FD5E291009BC9D5 /* FormStackController.swift in Sources */,
+				4CB816911FE05F8000EB0818 /* UserPreferencesHeaderView.swift in Sources */,
+				4C54B4901FE066DC0045DCFC /* UserPreferenceModel.swift in Sources */,
+				4CB8168F1FE05AB800EB0818 /* UserPreferencesTextFieldView.swift in Sources */,
 				4C2182511FD6F3C4003EEA33 /* FormStackModel.swift in Sources */,
 				4C0BF9011FD9ED2C00F7E67D /* PhoneNumberTextFieldView.swift in Sources */,
 				4C88F7391FD5E6F5009BC9D5 /* FormTextFieldView.swift in Sources */,
 				4C21824F1FD6F38D003EEA33 /* FormStackPresenter.swift in Sources */,
 				4C2182531FD7047E003EEA33 /* HelperFunctions.swift in Sources */,
+				4CB816871FE0362800EB0818 /* UserPreferencesStackContainer.swift in Sources */,
 				4C5C87D41FD1D80B00BEAD5C /* AppDelegate.swift in Sources */,
 				4C0BF8FF1FD9D74800F7E67D /* UserProfileStateList.swift in Sources */,
+				4CB8168B1FE0511E00EB0818 /* UserPreferencesInteractor.swift in Sources */,
 				4C36FEB71FD61EEB008E4C5C /* NameViewModel.swift in Sources */,
 				4C5C87F51FD1E34000BEAD5C /* CitySearchExample.swift in Sources */,
 				4C083ACA1FD8C4A0006CF142 /* FormStackHeaderView.swift in Sources */,
+				4CB8168D1FE0512A00EB0818 /* UserPreferencesViewModel.swift in Sources */,
 				4C288D741FD4AFBC008697F6 /* CircleViewModel.swift in Sources */,
 				4C21824D1FD6F382003EEA33 /* FormStackInteractor.swift in Sources */,
 			);

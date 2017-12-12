@@ -16,9 +16,10 @@ class ViewController: UIViewController {
         case Textfield
         case PubSub
         case Form
+        case Prefs
     }
     
-    fileprivate let examples:[ExampleType] = [.Textfield, .PubSub, .Form]
+    fileprivate let examples:[ExampleType] = [.Textfield, .PubSub, .Form, .Prefs]
     
     fileprivate lazy var exampleTable:UITableView = {
         let tableView = UITableView()
@@ -62,6 +63,8 @@ extension ViewController:UITableViewDataSource {
             cell.textLabel?.text = "Publisher Subscriber, ect..."
         case .Form:
             cell.textLabel?.text = "Form using VIP Pattern"
+        case .Prefs:
+            cell.textLabel?.text = "Preferences"
         }
         return cell
     }
@@ -90,6 +93,9 @@ extension ViewController:UITableViewDelegate {
             example.output = interactor
             interactor.output = presenter
             presenter.output = example
+            self.navigationController?.pushViewController(example, animated: true)
+        case .Prefs:
+            let example = UserPreferencesStackContainer()
             self.navigationController?.pushViewController(example, animated: true)
         }
     }

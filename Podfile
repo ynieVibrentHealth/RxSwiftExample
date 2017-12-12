@@ -12,9 +12,10 @@ def shared_pods
 	pod 'IGListKit', '~> 3.0.0'
 	pod 'Kingfisher', '3.7.1'
 	pod 'SnapKit', '~> 3.2.0'
-	pod 'RxSwift', '~> 3.4'
-    pod 'RxCocoa', '~> 3.4'
+
     pod 'ObjectMapper', '2.2.9'
+    pod 'RxSwift', '~> 3.4'
+    pod 'RxCocoa', '~> 3.4'
     pod 'PhoneNumberKit', '1.4.0'
 end
 
