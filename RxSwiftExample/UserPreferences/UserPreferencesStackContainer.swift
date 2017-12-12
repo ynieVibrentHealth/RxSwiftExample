@@ -33,11 +33,30 @@ class UserPreferencesStackContainer:UIViewController{
         return stackView
     }()
     
+    fileprivate lazy var accountInfoHeader:UserPreferencesHeaderView = {
+        let headerView = UserPreferencesHeaderView()
+        headerView.configure(title: "Account Information")
+        return headerView
+    }()
     
+    fileprivate lazy var emailTextField:UserPreferencesTextFieldView = {
+        let emailTextField = UserPreferencesTextFieldView()
+        return emailTextField
+    }()
+    
+    fileprivate lazy var passwordTextField:UserPreferencesTextFieldView = {
+        let passwordTextField = UserPreferencesTextFieldView()
+        return passwordTextField
+    }()
     
     override func viewDidLoad() {
         let request = UserPreferencesModel.Functions.Request.UserDetails
         output?.handle(request)
+        
+        stackContainer.addArrangedSubview(accountInfoHeader)
+        stackContainer.addArrangedSubview(emailTextField)
+        stackContainer.addArrangedSubview(passwordTextField)
+        
         super.viewDidLoad()
     }
     
@@ -55,9 +74,19 @@ class UserPreferencesStackContainer:UIViewController{
 
 extension UserPreferencesStackContainer: UserPreferencesViewInput {
     func display(_ state: UserPreferencesModel.Functions.State) {
-//        switch state {
-//        case .UserDetails(let viewModel):
-//
-//        }
+        switch state {
+        case .UserDetails(let viewModel):
+            displayUserDetails(viewModelDict: viewModel)
+        }
+    }
+    
+    private func displayUserDetails(viewModelDict:[String:UserPreferencesViewModel]) {
+        if let userNameViewModel = viewModelDict[UserPreferencesModel.Keys.Email]{
+            emailTextField.configure(with: userNameViewModel)
+        }
+        
+        if let passwordViewModel = viewModelDict[UserPreferencesModel.Keys.Password] {
+            passwordTextField.configure(with: passwordViewModel)
+        }
     }
 }
