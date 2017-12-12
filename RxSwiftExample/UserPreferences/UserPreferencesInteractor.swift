@@ -23,6 +23,10 @@ class UserPreferencesInteractor:UserPreferencesInteractorInput {
     }
     
     private func retrieveUserDetails() {
-        
+        let userDTO = ACUserDTO()
+        userDTO.email = "aa2000@aa.com"
+        userDTO.password = "password"
+        let response = UserPreferencesModel.Functions.Response.UserDetails(userDTO: userDTO)
+        output?.process(response)
     }
 }

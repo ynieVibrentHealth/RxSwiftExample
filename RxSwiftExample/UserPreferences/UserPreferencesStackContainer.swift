@@ -33,6 +33,14 @@ class UserPreferencesStackContainer:UIViewController{
         return stackView
     }()
     
+    
+    
+    override func viewDidLoad() {
+        let request = UserPreferencesModel.Functions.Request.UserDetails
+        output?.handle(request)
+        super.viewDidLoad()
+    }
+    
     override func viewWillLayoutSubviews() {
         scrollContainer.snp.updateConstraints { (make) in
             make.edges.equalTo(self.view)
@@ -47,6 +55,9 @@ class UserPreferencesStackContainer:UIViewController{
 
 extension UserPreferencesStackContainer: UserPreferencesViewInput {
     func display(_ state: UserPreferencesModel.Functions.State) {
-        
+//        switch state {
+//        case .UserDetails(let viewModel):
+//
+//        }
     }
 }

@@ -17,7 +17,16 @@ struct UserPreferencesModel {
             case UserDetails(userDTO: ACUserDTO)
         }
         enum State {
-            case UserDetails(preferencesViewModel:UserPreferencesViewModel)
+            case UserDetails(preferencesViewModel:[String: UserPreferencesViewModel])
         }
+    }
+    
+    struct Keys {
+        static let Email = "UserPreferencesDictKey_Email"
+        static let Password = "UserPreferencesDictKey_Password"
+        static let PushNotifcations = "UserPreferencesDictKey_PushNotifications"
+        static let EmailNotifications = "UserPreferencesDictKey_EmailNotifications"
+        static let SMSN = "UserPreferencesDictKey_SMS"
+        static let Language = "UserPreferencesDictKey_Language"
     }
 }

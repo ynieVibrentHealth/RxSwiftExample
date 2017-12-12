@@ -71,6 +71,7 @@ class ACUserDTO : NSObject{
     var address : ACUserAddressDTO?
     var dob : NSNumber?
     var email : String?
+    var password: String?
     var firstName : String?
     var id : NSNumber?
     var lastName : String?

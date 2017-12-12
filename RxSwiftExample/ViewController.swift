@@ -96,6 +96,13 @@ extension ViewController:UITableViewDelegate {
             self.navigationController?.pushViewController(example, animated: true)
         case .Prefs:
             let example = UserPreferencesStackContainer()
+            let interactor = UserPreferencesInteractor()
+            let presenter = UserPreferencesPresenter()
+            
+            example.output = interactor
+            interactor.output = presenter
+            presenter.output = example
+            
             self.navigationController?.pushViewController(example, animated: true)
         }
     }
