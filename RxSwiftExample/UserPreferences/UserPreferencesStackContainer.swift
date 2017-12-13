@@ -39,15 +39,17 @@ class UserPreferencesStackContainer:UIViewController{
         return headerView
     }()
     
-    fileprivate lazy var emailTextField:UserPreferencesTextFieldView = {
-        let emailTextField = UserPreferencesTextFieldView()
-        return emailTextField
+    fileprivate lazy var emailTextField:UserPreferencesTextFieldView = UserPreferencesTextFieldView()
+    
+    fileprivate lazy var passwordTextField:UserPreferencesTextFieldView = UserPreferencesTextFieldView()
+    
+    fileprivate lazy var applicationSettingsHeader:UserPreferencesHeaderView = {
+        let headerView = UserPreferencesHeaderView()
+        headerView.configure(title: "System Settings")
+        return headerView
     }()
     
-    fileprivate lazy var passwordTextField:UserPreferencesTextFieldView = {
-        let passwordTextField = UserPreferencesTextFieldView()
-        return passwordTextField
-    }()
+    fileprivate lazy var emailSettings:UserPreferencesSwitchView = UserPreferencesSwitchView()
     
     override func viewDidLoad() {
         let request = UserPreferencesModel.Functions.Request.UserDetails
@@ -56,6 +58,8 @@ class UserPreferencesStackContainer:UIViewController{
         stackContainer.addArrangedSubview(accountInfoHeader)
         stackContainer.addArrangedSubview(emailTextField)
         stackContainer.addArrangedSubview(passwordTextField)
+        stackContainer.addArrangedSubview(applicationSettingsHeader)
+        stackContainer.addArrangedSubview(emailSettings)
         
         super.viewDidLoad()
     }
@@ -81,12 +85,16 @@ extension UserPreferencesStackContainer: UserPreferencesViewInput {
     }
     
     private func displayUserDetails(viewModelDict:[String:UserPreferencesViewModel]) {
-        if let userNameViewModel = viewModelDict[UserPreferencesModel.Keys.Email]{
+        if let userNameViewModel = viewModelDict[UserPreferencesModel.Keys.Email] as? UserPreferencesTextfieldViewModel{
             emailTextField.configure(with: userNameViewModel)
         }
         
-        if let passwordViewModel = viewModelDict[UserPreferencesModel.Keys.Password] {
+        if let passwordViewModel = viewModelDict[UserPreferencesModel.Keys.Password] as? UserPreferencesTextfieldViewModel{
             passwordTextField.configure(with: passwordViewModel)
+        }
+        
+        if let emailViewModel = viewModelDict[UserPreferencesModel.Keys.EmailNotifications] as? UserPreferencesSwitchViewModel {
+            emailSettings.configure(with: emailViewModel)
         }
     }
 }

@@ -26,6 +26,14 @@ class UserPreferencesInteractor:UserPreferencesInteractorInput {
         let userDTO = ACUserDTO()
         userDTO.email = "aa2000@aa.com"
         userDTO.password = "password"
+        
+        let userPreferences = ACUserPreferencesDTO()
+        userPreferences.emailNotifications = false
+        userPreferences.pushNotifications = false
+        userPreferences.locale = "es"
+        
+        userDTO.userPreferences = userPreferences
+        
         let response = UserPreferencesModel.Functions.Response.UserDetails(userDTO: userDTO)
         output?.process(response)
     }

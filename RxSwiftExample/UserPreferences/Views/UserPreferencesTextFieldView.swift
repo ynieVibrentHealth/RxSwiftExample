@@ -45,10 +45,10 @@ class UserPreferencesTextFieldView: UIView {
         return button
     }()
     
-    fileprivate var viewModel:UserPreferencesViewModel?
+    fileprivate var viewModel:UserPreferencesTextfieldViewModel?
     public var changeAction:(() -> Void)?
     
-    public func configure(with viewModel:UserPreferencesViewModel) {
+    public func configure(with viewModel:UserPreferencesTextfieldViewModel) {
         self.viewModel = viewModel
         placeHolderLabel.text = viewModel.placeHolder
         switch viewModel.textFieldType {
@@ -62,7 +62,7 @@ class UserPreferencesTextFieldView: UIView {
             actionLabel.setTitle("I have no idea", for: .normal)
         default:
             notEditableTextfield.isSecureTextEntry = false
-            if let value = viewModel.value?.value as? String {
+            if let value = viewModel.value.value as? String {
                 notEditableTextfield.text = value
             }
             actionLabel.isUserInteractionEnabled = false
