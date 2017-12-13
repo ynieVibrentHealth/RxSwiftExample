@@ -1,5 +1,5 @@
 //
-//  UserPreferencesSwitchView.swift
+//  UserPreferencesPushNotificationsView.swift
 //  RxSwiftExample
 //
 //  Created by Yuchen Nie on 12/13/17.
@@ -12,7 +12,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class UserPreferencesSwitchView:UIView {
+class UserPreferencesPushNotificationsView:UIView {
     fileprivate let disposeBag = DisposeBag()
     
     fileprivate lazy var titleLabel:UILabel = {
@@ -28,18 +28,40 @@ class UserPreferencesSwitchView:UIView {
         return control
     }()
     
+    fileprivate lazy var actionLabel:UIButton = {
+        let button = UIButton()
+        button.setTitle("Settings", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        self.addSubview(button)
+        return button
+    }()
+    
     fileprivate lazy var dividerLine:UIView = {
-       let view = UIView()
+        let view = UIView()
         view.backgroundColor = .lightGray
         self.addSubview(view)
         return view
     }()
     
-    public func configure(with viewModel:UserPreferencesSwitchViewModel) {
+    private var shouldShowSwitch:Bool = true
+    
+    public func configure(with viewModel:UserPreferencesNotificationModel) {
         titleLabel.text = viewModel.placeHolder
-        switchController.rx.isOn.asObservable().bind(to: viewModel.value).addDisposableTo(disposeBag)
+        switch viewModel.value.value {
+        case .SystemDisabled:
+            shouldShowSwitch = false
+            switchController.isHidden = true
+        default:
+            configureForSwitch(with: viewModel)
+        }
         setNeedsUpdateConstraints()
         updateConstraintsIfNeeded()
+    }
+    
+    private func configureForSwitch(with viewModel:UserPreferencesNotificationModel) {
+        shouldShowSwitch = true
+        actionLabel.isHidden = true
+        
     }
     
     override func updateConstraints() {
@@ -49,10 +71,18 @@ class UserPreferencesSwitchView:UIView {
             make.trailing.equalTo(self.switchController.snp.leading).offset(-10)
         }
         
-        switchController.snp.updateConstraints { (make) in
-            make.trailing.equalTo(self).inset(15).priority(999)
-            make.centerY.equalTo(self.titleLabel)
+        if shouldShowSwitch {
+            switchController.snp.updateConstraints { (make) in
+                make.trailing.equalTo(self).inset(15).priority(999)
+                make.centerY.equalTo(self.titleLabel)
+            }
+        } else {
+            actionLabel.snp.updateConstraints { (make) in
+                make.trailing.equalTo(self).inset(15).priority(999)
+                make.centerY.equalTo(self.titleLabel)
+            }
         }
+
         
         dividerLine.snp.updateConstraints { (make) in
             make.leading.trailing.equalTo(self).inset(20).priority(999)

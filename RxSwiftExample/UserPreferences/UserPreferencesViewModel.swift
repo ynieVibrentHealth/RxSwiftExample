@@ -69,3 +69,15 @@ class UserPreferencesNotificationModel:UserPreferencesViewModel {
         self.placeHolder = placeHolder
     }
 }
+
+class UserPreferencesLanguageModel:UserPreferencesViewModel {
+    var placeHolder: String
+    var value:Variable<ACLocaleMaster>
+    var previousValue:Variable<ACLocaleMaster>
+    
+    init(locale:ACLocaleMaster, placeHolder:String) {
+        self.value = Variable(locale)
+        self.previousValue = Variable(locale)
+        self.placeHolder = placeHolder
+    }
+}

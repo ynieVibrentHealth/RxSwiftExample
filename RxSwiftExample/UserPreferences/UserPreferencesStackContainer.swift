@@ -40,7 +40,6 @@ class UserPreferencesStackContainer:UIViewController{
     }()
     
     fileprivate lazy var emailTextField:UserPreferencesTextFieldView = UserPreferencesTextFieldView()
-    
     fileprivate lazy var passwordTextField:UserPreferencesTextFieldView = UserPreferencesTextFieldView()
     
     fileprivate lazy var applicationSettingsHeader:UserPreferencesHeaderView = {
@@ -50,6 +49,7 @@ class UserPreferencesStackContainer:UIViewController{
     }()
     
     fileprivate lazy var emailSettings:UserPreferencesSwitchView = UserPreferencesSwitchView()
+    fileprivate lazy var notificationSettings:UserPreferencesPushNotificationsView = UserPreferencesPushNotificationsView()
     
     override func viewDidLoad() {
         let request = UserPreferencesModel.Functions.Request.UserDetails
@@ -60,6 +60,7 @@ class UserPreferencesStackContainer:UIViewController{
         stackContainer.addArrangedSubview(passwordTextField)
         stackContainer.addArrangedSubview(applicationSettingsHeader)
         stackContainer.addArrangedSubview(emailSettings)
+        stackContainer.addArrangedSubview(notificationSettings)
         
         super.viewDidLoad()
     }
@@ -95,6 +96,10 @@ extension UserPreferencesStackContainer: UserPreferencesViewInput {
         
         if let emailViewModel = viewModelDict[UserPreferencesModel.Keys.EmailNotifications] as? UserPreferencesSwitchViewModel {
             emailSettings.configure(with: emailViewModel)
+        }
+        
+        if let notificationModel = viewModelDict[UserPreferencesModel.Keys.PushNotifcations] as? UserPreferencesNotificationModel {
+            notificationSettings.configure(with: notificationModel)
         }
     }
 }

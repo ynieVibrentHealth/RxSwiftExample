@@ -102,3 +102,10 @@ class ACUserPreferencesDTO : NSObject{
     var timezone : String?
     var userId : NSNumber?
 }
+
+enum ACLocaleMaster : String {
+    case en = "en"
+    case es = "es"
+    case cz = "cz"
+}
+

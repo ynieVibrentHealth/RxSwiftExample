@@ -22,6 +22,8 @@
 		4C288D741FD4AFBC008697F6 /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */; };
 		4C36FEB71FD61EEB008E4C5C /* NameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C36FEB61FD61EEB008E4C5C /* NameViewModel.swift */; };
 		4C54B4901FE066DC0045DCFC /* UserPreferenceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C54B48F1FE066DC0045DCFC /* UserPreferenceModel.swift */; };
+		4C54B4921FE1DF2A0045DCFC /* UserPreferencesPushNotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C54B4911FE1DF2A0045DCFC /* UserPreferencesPushNotificationsView.swift */; };
+		4C54B4941FE1E42C0045DCFC /* UserPreferencesSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C54B4931FE1E42C0045DCFC /* UserPreferencesSelectionView.swift */; };
 		4C5C87D41FD1D80B00BEAD5C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87D31FD1D80B00BEAD5C /* AppDelegate.swift */; };
 		4C5C87D61FD1D80B00BEAD5C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87D51FD1D80B00BEAD5C /* ViewController.swift */; };
 		4C5C87D91FD1D80B00BEAD5C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C87D71FD1D80B00BEAD5C /* Main.storyboard */; };
@@ -65,6 +67,8 @@
 		4C288D731FD4AFBC008697F6 /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		4C36FEB61FD61EEB008E4C5C /* NameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewModel.swift; sourceTree = "<group>"; };
 		4C54B48F1FE066DC0045DCFC /* UserPreferenceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserPreferenceModel.swift; path = RxSwiftExample/UserPreferences/UserPreferenceModel.swift; sourceTree = SOURCE_ROOT; };
+		4C54B4911FE1DF2A0045DCFC /* UserPreferencesPushNotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesPushNotificationsView.swift; sourceTree = "<group>"; };
+		4C54B4931FE1E42C0045DCFC /* UserPreferencesSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesSelectionView.swift; sourceTree = "<group>"; };
 		4C5C87D01FD1D80B00BEAD5C /* RxSwiftExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxSwiftExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5C87D31FD1D80B00BEAD5C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4C5C87D51FD1D80B00BEAD5C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -234,6 +238,8 @@
 				4CB8168E1FE05AB800EB0818 /* UserPreferencesTextFieldView.swift */,
 				4CB816901FE05F8000EB0818 /* UserPreferencesHeaderView.swift */,
 				4C0E40B91FE17F4C002ADB29 /* UserPreferencesSwitchView.swift */,
+				4C54B4911FE1DF2A0045DCFC /* UserPreferencesPushNotificationsView.swift */,
+				4C54B4931FE1E42C0045DCFC /* UserPreferencesSelectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -515,11 +521,13 @@
 				4C2182531FD7047E003EEA33 /* HelperFunctions.swift in Sources */,
 				4CB816871FE0362800EB0818 /* UserPreferencesStackContainer.swift in Sources */,
 				4C5C87D41FD1D80B00BEAD5C /* AppDelegate.swift in Sources */,
+				4C54B4941FE1E42C0045DCFC /* UserPreferencesSelectionView.swift in Sources */,
 				4C0BF8FF1FD9D74800F7E67D /* UserProfileStateList.swift in Sources */,
 				4CB8168B1FE0511E00EB0818 /* UserPreferencesInteractor.swift in Sources */,
 				4C36FEB71FD61EEB008E4C5C /* NameViewModel.swift in Sources */,
 				4C5C87F51FD1E34000BEAD5C /* CitySearchExample.swift in Sources */,
 				4C083ACA1FD8C4A0006CF142 /* FormStackHeaderView.swift in Sources */,
+				4C54B4921FE1DF2A0045DCFC /* UserPreferencesPushNotificationsView.swift in Sources */,
 				4C0E40BA1FE17F4C002ADB29 /* UserPreferencesSwitchView.swift in Sources */,
 				4CB8168D1FE0512A00EB0818 /* UserPreferencesViewModel.swift in Sources */,
 				4C288D741FD4AFBC008697F6 /* CircleViewModel.swift in Sources */,
