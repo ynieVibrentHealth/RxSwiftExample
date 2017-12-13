@@ -35,7 +35,11 @@ class UserPreferencesSelectionView: UIView {
         return view
     }()
     
-    
+    fileprivate lazy var pickerView:UIPickerView = {
+        let pickerView = UIPickerView()
+        self.addSubview(pickerView)
+        return pickerView
+    }()
     
     fileprivate lazy var actionLabel:UIButton = {
         let button = UIButton()
@@ -45,7 +49,6 @@ class UserPreferencesSelectionView: UIView {
     }()
     
     fileprivate var viewModel:UserPreferencesTextfieldViewModel?
-    public var changeAction:(() -> Void)?
     
     public func configure(with viewModel:ProfileFieldViewModel) {
         

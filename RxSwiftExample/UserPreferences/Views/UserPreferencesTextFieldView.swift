@@ -36,8 +36,6 @@ class UserPreferencesTextFieldView: UIView {
         return view
     }()
     
-    
-    
     fileprivate lazy var actionLabel:UIButton = {
         let button = UIButton()
         button.setTitleColor(.blue, for: .normal)
