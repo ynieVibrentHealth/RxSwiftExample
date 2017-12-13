@@ -79,6 +79,7 @@ class ACUserDTO : NSObject{
     var middleInitial : String?
     var phoneNumber : String?
     var profileImageUrl : String?
+    var userPreferences : ACUserPreferencesDTO?
 }
 
 class ACUserAddressDTO : NSObject{
@@ -92,4 +93,12 @@ class ACUserAddressDTO : NSObject{
     var streetTwo : String?
     var unitNumber : String?
     var zip : String?
+}
+
+class ACUserPreferencesDTO : NSObject{
+    var emailNotifications : Bool?
+    var locale : String?
+    var pushNotifications : Bool?
+    var timezone : String?
+    var userId : NSNumber?
 }

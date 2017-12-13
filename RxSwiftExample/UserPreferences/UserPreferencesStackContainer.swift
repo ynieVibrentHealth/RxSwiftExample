@@ -65,7 +65,7 @@ class UserPreferencesStackContainer:UIViewController{
             make.edges.equalTo(self.view)
         }
         stackContainer.snp.updateConstraints { (make) in
-            make.edges.equalTo(self.view)
+            make.edges.equalTo(self.scrollContainer)
             make.width.equalTo(UIScreen.main.bounds.width)
         }
         super.viewWillLayoutSubviews()

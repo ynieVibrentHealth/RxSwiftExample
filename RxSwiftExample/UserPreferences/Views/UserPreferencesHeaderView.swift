@@ -31,12 +31,12 @@ class UserPreferencesHeaderView:UIView {
     
     override func updateConstraints() {
         titleLabel.snp.updateConstraints { (make) in
-            make.leading.trailing.equalTo(self).inset(20)
-            make.top.bottom.equalTo(self).inset(10)
+            make.leading.trailing.equalTo(self).inset(20).priority(999)
+            make.top.bottom.equalTo(self).inset(20).priority(999)
         }
         dividerLine.snp.updateConstraints { (make) in
-            make.bottom.equalTo(self)
-            make.leading.trailing.equalTo(self).inset(10)
+            make.bottom.equalTo(self).inset(10)
+            make.leading.trailing.equalTo(self).inset(10).priority(999)
             make.height.equalTo(1)
         }
         super.updateConstraints()
