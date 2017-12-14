@@ -59,11 +59,11 @@ class UserPreferencesPresenter:UserPreferencesPresenterInput {
         let emailNotifications = preferencesDTO.emailNotifications ?? false
         let localeModel = preferencesDTO.locale ?? "en"
         
-        let localViewModel = UserPreferencesLanguageModel(locale: ACLocaleMaster(rawValue: localeModel)!, placeHolder: "Language")
+        let localViewModel = UserPreferencesLanguageModel(locale: ACLocaleMaster(rawValue: localeModel)!, placeHolder: "Language", availableLocales:[.en, .es])
         
         //todo: add in sms options when that's available
         let emailViewModel = UserPreferencesSwitchViewModel(value: emailNotifications, placeHolder: "Email Notifications")
-        return [UserPreferencesModel.Keys.EmailNotifications: emailViewModel, UserPreferencesModel.Keys.Language:localeModel]
+        return [UserPreferencesModel.Keys.EmailNotifications: emailViewModel, UserPreferencesModel.Keys.Language:localViewModel]
     }
     
     private func pushNotificationsViewModel(with preferenceDTO:ACUserPreferencesDTO?, completion:@escaping (_ notificationViewModel:[String:UserPreferencesNotificationModel]) -> Void){

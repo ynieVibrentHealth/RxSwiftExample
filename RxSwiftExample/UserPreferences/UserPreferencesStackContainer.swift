@@ -50,6 +50,7 @@ class UserPreferencesStackContainer:UIViewController{
     
     fileprivate lazy var emailSettings:UserPreferencesSwitchView = UserPreferencesSwitchView()
     fileprivate lazy var notificationSettings:UserPreferencesPushNotificationsView = UserPreferencesPushNotificationsView()
+    fileprivate lazy var languageSettings:UserPreferencesSelectionView = UserPreferencesSelectionView()
     
     override func viewDidLoad() {
         let request = UserPreferencesModel.Functions.Request.UserDetails
@@ -61,6 +62,7 @@ class UserPreferencesStackContainer:UIViewController{
         stackContainer.addArrangedSubview(applicationSettingsHeader)
         stackContainer.addArrangedSubview(emailSettings)
         stackContainer.addArrangedSubview(notificationSettings)
+        stackContainer.addArrangedSubview(languageSettings)
         
         super.viewDidLoad()
     }
@@ -100,6 +102,10 @@ extension UserPreferencesStackContainer: UserPreferencesViewInput {
         
         if let notificationModel = viewModelDict[UserPreferencesModel.Keys.PushNotifcations] as? UserPreferencesNotificationModel {
             notificationSettings.configure(with: notificationModel)
+        }
+        
+        if let languageModel = viewModelDict[UserPreferencesModel.Keys.Language] as? UserPreferencesLanguageModel {
+            languageSettings.configure(with: languageModel)
         }
     }
 }

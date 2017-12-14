@@ -70,14 +70,29 @@ class UserPreferencesNotificationModel:UserPreferencesViewModel {
     }
 }
 
+extension ACLocaleMaster {
+    func localeName() -> String {
+        switch self {
+        case .cz:
+            return "Chinese"
+        case .en:
+            return "English"
+        case .es:
+            return "Spanish"
+        }
+    }
+}
+
 class UserPreferencesLanguageModel:UserPreferencesViewModel {
     var placeHolder: String
     var value:Variable<ACLocaleMaster>
     var previousValue:Variable<ACLocaleMaster>
+    var availableLocales:Variable<[ACLocaleMaster]>
     
-    init(locale:ACLocaleMaster, placeHolder:String) {
+    init(locale:ACLocaleMaster, placeHolder:String, availableLocales:[ACLocaleMaster]) {
         self.value = Variable(locale)
         self.previousValue = Variable(locale)
         self.placeHolder = placeHolder
+        self.availableLocales = Variable(availableLocales)
     }
 }
