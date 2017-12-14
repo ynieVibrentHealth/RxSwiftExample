@@ -16,7 +16,9 @@ def shared_pods
     pod 'ObjectMapper', '2.2.9'
     pod 'RxSwift', '~> 3.4'
     pod 'RxCocoa', '~> 3.4'
+    pod 'RxDataSources', '~> 2.0.2'
     pod 'PhoneNumberKit', '1.4.0'
+    pod 'VHAppearance', :git => 'git@github.com:VibrentHealth/VHAppearance', :branch => 'master', :inhibit_warnings => false
 end
 
 def testing_pods

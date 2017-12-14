@@ -17,9 +17,10 @@ class ViewController: UIViewController {
         case PubSub
         case Form
         case Prefs
+        case HTMLTextView
     }
     
-    fileprivate let examples:[ExampleType] = [.Textfield, .PubSub, .Form, .Prefs]
+    fileprivate let examples:[ExampleType] = [.Textfield, .PubSub, .Form, .Prefs, .HTMLTextView]
     
     fileprivate lazy var exampleTable:UITableView = {
         let tableView = UITableView()
@@ -65,6 +66,8 @@ extension ViewController:UITableViewDataSource {
             cell.textLabel?.text = "Form using VIP Pattern"
         case .Prefs:
             cell.textLabel?.text = "Preferences"
+        case .HTMLTextView:
+            cell.textLabel?.text = "HTML Textfield Example"
         }
         return cell
     }
@@ -104,6 +107,9 @@ extension ViewController:UITableViewDelegate {
             presenter.output = example
             
             self.navigationController?.pushViewController(example, animated: true)
+        case .HTMLTextView:
+            let textView = HTMLTextfieldExample()
+            self.navigationController?.pushViewController(textView, animated: true)
         }
     }
 }

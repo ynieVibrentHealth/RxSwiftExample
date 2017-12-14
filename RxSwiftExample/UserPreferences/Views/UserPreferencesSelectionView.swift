@@ -10,23 +10,22 @@ import UIKit
 import SnapKit
 import RxSwift
 import RxCocoa
+import RxDataSources
 
 class UserPreferencesSelectionView: UIView {
     fileprivate let disposeBag = DisposeBag()
     
+    fileprivate let stringPickerAdapter = RxPickerViewStringAdapter<[ACLocaleMaster]>.init(components: [], numberOfComponents: { (datasource, pickerview, arrString) -> Int in
+        return 1
+    }, numberOfRowsInComponent: { (dataSource, pickerView, items, row) -> Int in
+        return items.count
+    }) { (dataSource, pickerView, items, row, _) -> String? in
+        return items[row].localeName()
+    }
+    
     fileprivate lazy var selectionTextField:UITextField = {
         let textField = UITextField()
-        textField.inputView = self.pickerView
-        textField.inputAccessoryView = self.toolBar
         textField.textAlignment = .right
-        textField.rx.controlEvent([.editingDidBegin]).asObservable().subscribe(onNext: { [weak self] (_) in
-            guard let _self = self else {return}
-            if let selectedLanguageIndex = _self.viewModel?.availableLocales.value.index(where: { (model) -> Bool in
-                return model == _self.viewModel?.value.value
-            }) {
-                _self.pickerView.selectedRow(inComponent: selectedLanguageIndex)
-            }
-        }).addDisposableTo(self.disposeBag)
         self.addSubview(textField)
         return textField
     }()
@@ -45,7 +44,10 @@ class UserPreferencesSelectionView: UIView {
         return view
     }()
     
-    fileprivate lazy var pickerView:UIPickerView = UIPickerView()
+    fileprivate lazy var pickerView:UIPickerView = {
+        let pickerView = UIPickerView()
+        return pickerView
+    }()
     
     fileprivate lazy var toolBar: UIToolbar = {
         let toolBar = UIToolbar()
@@ -82,12 +84,16 @@ class UserPreferencesSelectionView: UIView {
         self.viewModel = viewModel
         self.titleLabel.text = viewModel.placeHolder
         self.selectionTextField.text = viewModel.value.value.localeName()
-        let bindFunction = viewModel.availableLocales.asObservable().bind(to: pickerView.rx.itemTitles)
+        self.selectionTextField.inputView = self.pickerView
+        self.selectionTextField.inputAccessoryView = self.toolBar
+        viewModel.availableLocales.asObservable().bind(to: pickerView.rx.items(adapter: self.stringPickerAdapter)).addDisposableTo(self.disposeBag)
         
-        bindFunction({(index, avaiableModel) -> String in
-            print(avaiableModel)
-            return avaiableModel.localeName()
-        }).addDisposableTo(disposeBag)
+        if let selectedLanguageIndex = viewModel.availableLocales.value.index(where: { (model) -> Bool in
+            return model == viewModel.value.value
+        }) {
+            pickerView.selectedRow(inComponent: selectedLanguageIndex)
+        }
+        
         setNeedsUpdateConstraints()
         updateConstraintsIfNeeded()
     }

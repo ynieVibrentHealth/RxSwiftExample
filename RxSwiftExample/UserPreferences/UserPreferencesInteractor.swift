@@ -30,7 +30,7 @@ class UserPreferencesInteractor:UserPreferencesInteractorInput {
         let userPreferences = ACUserPreferencesDTO()
         userPreferences.emailNotifications = false
         userPreferences.pushNotifications = false
-        userPreferences.locale = "es"
+        userPreferences.locale = "en"
         
         userDTO.userPreferences = userPreferences
         
