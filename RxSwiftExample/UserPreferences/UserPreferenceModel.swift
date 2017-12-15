@@ -24,6 +24,7 @@ struct UserPreferencesModel {
     struct Keys {
         static let Email = "UserPreferencesDictKey_Email"
         static let Password = "UserPreferencesDictKey_Password"
+        static let WithdrawPMI = "UserPreferencesDictKey_WithdrawPMI"
         static let PushNotifcations = "UserPreferencesDictKey_PushNotifications"
         static let EmailNotifications = "UserPreferencesDictKey_EmailNotifications"
         static let SMSN = "UserPreferencesDictKey_SMS"

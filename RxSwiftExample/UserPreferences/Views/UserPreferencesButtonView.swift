@@ -18,13 +18,26 @@ class UserPreferencesButtonView:UIView {
         button.rx.tap.subscribe(onNext: { [weak self] (_) in
             self?.action?()
         }).addDisposableTo(self.disposeBag)
+        button.setTitleColor(.blue, for: .normal)
         self.addSubview(button)
         return button
     }()
     
     public var action:(() -> Void)?
     
-    func configure() {
-        
+    func configure(with viewModel:UserPreferencesButtonViewModel) {
+        actionButton.setTitle(viewModel.placeHolder, for: .normal)
+        self.action = viewModel.action
+        setNeedsUpdateConstraints()
+        updateConstraintsIfNeeded()
+    }
+    
+    override func updateConstraints() {
+        actionButton.snp.updateConstraints { (make) in
+            make.leading.equalTo(self).inset(20)
+            make.top.bottom.equalTo(self).inset(5)
+            make.trailing.lessThanOrEqualTo(self).inset(20)
+        }
+        super.updateConstraints()
     }
 }

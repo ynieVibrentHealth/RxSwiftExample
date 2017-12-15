@@ -31,11 +31,12 @@ class UserPreferencesPresenter:UserPreferencesPresenterInput {
         
         let emailViewModel = UserPreferencesTextfieldViewModel(value: email, placeHolder: "Email Address")
         let passwordViewModel = UserPreferencesTextfieldViewModel(value: password, placeHolder: "Password", type: .Hidden)
-        
+        let withdrawPMI = UserPreferencesButtonViewModel(placeHolder: "Withdraw from PMI")
         
         
         var userPrefsDict:[String:UserPreferencesViewModel] = [UserPreferencesModel.Keys.Email:emailViewModel,
-                                                               UserPreferencesModel.Keys.Password:passwordViewModel]
+                                                               UserPreferencesModel.Keys.Password:passwordViewModel,
+                                                               UserPreferencesModel.Keys.WithdrawPMI:withdrawPMI]
         
         let preferences = generatePreferencesModel(with: userDTO.userPreferences)
         for (key, value) in preferences {

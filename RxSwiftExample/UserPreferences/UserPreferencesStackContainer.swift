@@ -42,6 +42,7 @@ class UserPreferencesStackContainer:UIViewController{
     
     fileprivate lazy var emailTextField:UserPreferencesTextFieldView = UserPreferencesTextFieldView()
     fileprivate lazy var passwordTextField:UserPreferencesTextFieldView = UserPreferencesTextFieldView()
+    fileprivate lazy var withdrawPMIButton:UserPreferencesButtonView = UserPreferencesButtonView()
     
     fileprivate lazy var applicationSettingsHeader:UserPreferencesHeaderView = {
         let headerView = UserPreferencesHeaderView()
@@ -93,6 +94,14 @@ extension UserPreferencesStackContainer: UserPreferencesViewInput {
                 self.router.navigateTo(destination: .ChangePassword)
             }
             passwordTextField.configure(with: passwordViewModel)
+        }
+        
+        if let withdrawPMIModel = viewModelDict[UserPreferencesModel.Keys.WithdrawPMI] as? UserPreferencesButtonViewModel {
+            stackContainer.addArrangedSubview(withdrawPMIButton)
+            withdrawPMIModel.action = {[weak self] () -> Void in
+                self?.router.navigateTo(destination: .WithdrawFromPMI)
+            }
+            withdrawPMIButton.configure(with: withdrawPMIModel)
         }
         
         stackContainer.addArrangedSubview(applicationSettingsHeader)

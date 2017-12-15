@@ -84,7 +84,7 @@ class UserPreferencesLanguageModel:UserPreferencesViewModel {
     }
 }
 
-class UserPreferencesChangePasswordViewModel:UserPreferencesViewModel {
+class UserPreferencesButtonViewModel:UserPreferencesViewModel {
     var placeHolder: String
     var action:(() -> Void)?
     init(placeHolder:String) {
