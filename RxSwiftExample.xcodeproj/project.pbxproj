@@ -30,8 +30,10 @@
 		4C5C87DB1FD1D80B00BEAD5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C87DA1FD1D80B00BEAD5C /* Assets.xcassets */; };
 		4C5C87DE1FD1D80B00BEAD5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C5C87DC1FD1D80B00BEAD5C /* LaunchScreen.storyboard */; };
 		4C5C87F51FD1E34000BEAD5C /* CitySearchExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5C87F41FD1E34000BEAD5C /* CitySearchExample.swift */; };
+		4C5FD2801FE43321002D3380 /* UserPreferencesButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C5FD27F1FE43321002D3380 /* UserPreferencesButtonView.swift */; };
 		4C88F7371FD5E291009BC9D5 /* FormStackController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88F7361FD5E291009BC9D5 /* FormStackController.swift */; };
 		4C88F7391FD5E6F5009BC9D5 /* FormTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C88F7381FD5E6F5009BC9D5 /* FormTextFieldView.swift */; };
+		4C89D8DF1FE42CBF0098D84B /* UserPreferencesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C89D8DE1FE42CBF0098D84B /* UserPreferencesRouter.swift */; };
 		4CB816871FE0362800EB0818 /* UserPreferencesStackContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB816861FE0362800EB0818 /* UserPreferencesStackContainer.swift */; };
 		4CB816891FE0511400EB0818 /* UserPreferencesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB816881FE0511400EB0818 /* UserPreferencesPresenter.swift */; };
 		4CB8168B1FE0511E00EB0818 /* UserPreferencesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB8168A1FE0511E00EB0818 /* UserPreferencesInteractor.swift */; };
@@ -81,8 +83,10 @@
 		4C5C87E41FD1D80B00BEAD5C /* RxSwiftExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RxSwiftExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C5C87EA1FD1D80B00BEAD5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4C5C87F41FD1E34000BEAD5C /* CitySearchExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitySearchExample.swift; sourceTree = "<group>"; };
+		4C5FD27F1FE43321002D3380 /* UserPreferencesButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesButtonView.swift; sourceTree = "<group>"; };
 		4C88F7361FD5E291009BC9D5 /* FormStackController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormStackController.swift; sourceTree = "<group>"; };
 		4C88F7381FD5E6F5009BC9D5 /* FormTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormTextFieldView.swift; sourceTree = "<group>"; };
+		4C89D8DE1FE42CBF0098D84B /* UserPreferencesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesRouter.swift; sourceTree = "<group>"; };
 		4CB816861FE0362800EB0818 /* UserPreferencesStackContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesStackContainer.swift; sourceTree = "<group>"; };
 		4CB816881FE0511400EB0818 /* UserPreferencesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesPresenter.swift; sourceTree = "<group>"; };
 		4CB8168A1FE0511E00EB0818 /* UserPreferencesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPreferencesInteractor.swift; sourceTree = "<group>"; };
@@ -233,6 +237,7 @@
 				4CB8168A1FE0511E00EB0818 /* UserPreferencesInteractor.swift */,
 				4CB8168C1FE0512A00EB0818 /* UserPreferencesViewModel.swift */,
 				4C54B48F1FE066DC0045DCFC /* UserPreferenceModel.swift */,
+				4C89D8DE1FE42CBF0098D84B /* UserPreferencesRouter.swift */,
 			);
 			path = UserPreferences;
 			sourceTree = "<group>";
@@ -245,6 +250,7 @@
 				4C0E40B91FE17F4C002ADB29 /* UserPreferencesSwitchView.swift */,
 				4C54B4911FE1DF2A0045DCFC /* UserPreferencesPushNotificationsView.swift */,
 				4C54B4931FE1E42C0045DCFC /* UserPreferencesSelectionView.swift */,
+				4C5FD27F1FE43321002D3380 /* UserPreferencesButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -548,6 +554,8 @@
 				4C2182511FD6F3C4003EEA33 /* FormStackModel.swift in Sources */,
 				4C0BF9011FD9ED2C00F7E67D /* PhoneNumberTextFieldView.swift in Sources */,
 				4C88F7391FD5E6F5009BC9D5 /* FormTextFieldView.swift in Sources */,
+				4C5FD2801FE43321002D3380 /* UserPreferencesButtonView.swift in Sources */,
+				4C89D8DF1FE42CBF0098D84B /* UserPreferencesRouter.swift in Sources */,
 				4C21824F1FD6F38D003EEA33 /* FormStackPresenter.swift in Sources */,
 				4C2182531FD7047E003EEA33 /* HelperFunctions.swift in Sources */,
 				4CB816871FE0362800EB0818 /* UserPreferencesStackContainer.swift in Sources */,

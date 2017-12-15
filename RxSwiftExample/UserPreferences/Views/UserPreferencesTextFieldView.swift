@@ -57,7 +57,7 @@ class UserPreferencesTextFieldView: UIView {
                 self?.changeAction?()
             }).addDisposableTo(self.disposeBag)
             actionLabel.isUserInteractionEnabled = true
-            actionLabel.setTitle("I have no idea", for: .normal)
+            actionLabel.setTitle("Change password", for: .normal)
         default:
             notEditableTextfield.isSecureTextEntry = false
             notEditableTextfield.text = viewModel.value.value

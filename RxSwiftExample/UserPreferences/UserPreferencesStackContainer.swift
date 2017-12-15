@@ -17,6 +17,7 @@ protocol UserPreferencesViewInput {
 
 class UserPreferencesStackContainer:UIViewController{
     public var output:UserPreferencesInteractorInput?
+    fileprivate lazy var router = UserPreferencesRouter(viewController: self)
     
     fileprivate lazy var scrollContainer:UIScrollView = {
         let scrollView = UIScrollView(frame: self.view.bounds)
@@ -50,20 +51,12 @@ class UserPreferencesStackContainer:UIViewController{
     
     fileprivate lazy var emailSettings:UserPreferencesSwitchView = UserPreferencesSwitchView()
     fileprivate lazy var notificationSettings:UserPreferencesPushNotificationsView = UserPreferencesPushNotificationsView()
+    fileprivate lazy var smsSettings:UserPreferencesSwitchView = UserPreferencesSwitchView()
     fileprivate lazy var languageSettings:UserPreferencesSelectionView = UserPreferencesSelectionView()
     
     override func viewDidLoad() {
         let request = UserPreferencesModel.Functions.Request.UserDetails
         output?.handle(request)
-        
-        stackContainer.addArrangedSubview(accountInfoHeader)
-        stackContainer.addArrangedSubview(emailTextField)
-        stackContainer.addArrangedSubview(passwordTextField)
-        stackContainer.addArrangedSubview(applicationSettingsHeader)
-        stackContainer.addArrangedSubview(emailSettings)
-        stackContainer.addArrangedSubview(notificationSettings)
-        stackContainer.addArrangedSubview(languageSettings)
-        
         super.viewDidLoad()
     }
     
@@ -88,23 +81,39 @@ extension UserPreferencesStackContainer: UserPreferencesViewInput {
     }
     
     private func displayUserDetails(viewModelDict:[String:UserPreferencesViewModel]) {
+        stackContainer.addArrangedSubview(accountInfoHeader)
         if let userNameViewModel = viewModelDict[UserPreferencesModel.Keys.Email] as? UserPreferencesTextfieldViewModel{
+            stackContainer.addArrangedSubview(emailTextField)
             emailTextField.configure(with: userNameViewModel)
         }
         
         if let passwordViewModel = viewModelDict[UserPreferencesModel.Keys.Password] as? UserPreferencesTextfieldViewModel{
+            stackContainer.addArrangedSubview(passwordTextField)
+            passwordTextField.changeAction = { () -> Void in
+                self.router.navigateTo(destination: .ChangePassword)
+            }
             passwordTextField.configure(with: passwordViewModel)
         }
         
+        stackContainer.addArrangedSubview(applicationSettingsHeader)
+        
         if let emailViewModel = viewModelDict[UserPreferencesModel.Keys.EmailNotifications] as? UserPreferencesSwitchViewModel {
+            stackContainer.addArrangedSubview(emailSettings)
             emailSettings.configure(with: emailViewModel)
         }
         
         if let notificationModel = viewModelDict[UserPreferencesModel.Keys.PushNotifcations] as? UserPreferencesNotificationModel {
+            stackContainer.addArrangedSubview(notificationSettings)
             notificationSettings.configure(with: notificationModel)
         }
         
+        if let smsModel = viewModelDict[UserPreferencesModel.Keys.SMSN] as? UserPreferencesSwitchViewModel {
+            stackContainer.addArrangedSubview(smsSettings)
+            smsSettings.configure(with: smsModel)
+        }
+        
         if let languageModel = viewModelDict[UserPreferencesModel.Keys.Language] as? UserPreferencesLanguageModel {
+            stackContainer.addArrangedSubview(languageSettings)
             languageSettings.configure(with: languageModel)
         }
     }

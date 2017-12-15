@@ -87,12 +87,14 @@ class UserPreferencesSelectionView: UIView {
         self.selectionTextField.inputView = self.pickerView
         self.selectionTextField.inputAccessoryView = self.toolBar
         viewModel.availableLocales.asObservable().bind(to: pickerView.rx.items(adapter: self.stringPickerAdapter)).addDisposableTo(self.disposeBag)
-        
-        if let selectedLanguageIndex = viewModel.availableLocales.value.index(where: { (model) -> Bool in
-            return model == viewModel.value.value
-        }) {
-            pickerView.selectedRow(inComponent: selectedLanguageIndex)
+        DispatchQueue.main.async {
+            if let selectedLanguageIndex = viewModel.availableLocales.value.index(where: { (model) -> Bool in
+                return model == viewModel.value.value
+            }) {
+                self.pickerView.selectRow(selectedLanguageIndex, inComponent: 0, animated: false)
+            }
         }
+
         
         setNeedsUpdateConstraints()
         updateConstraintsIfNeeded()

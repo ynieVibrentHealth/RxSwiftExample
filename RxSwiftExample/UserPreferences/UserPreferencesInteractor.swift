@@ -27,10 +27,15 @@ class UserPreferencesInteractor:UserPreferencesInteractorInput {
         userDTO.email = "aa2000@aa.com"
         userDTO.password = "password"
         
+        let addressDTO = ACUserAddressDTO()
+        addressDTO.phoneNumber = "2834560987"
+        
+        userDTO.address = addressDTO
+        
         let userPreferences = ACUserPreferencesDTO()
         userPreferences.emailNotifications = false
         userPreferences.pushNotifications = false
-        userPreferences.locale = "en"
+        userPreferences.locale = "es"
         
         userDTO.userPreferences = userPreferences
         

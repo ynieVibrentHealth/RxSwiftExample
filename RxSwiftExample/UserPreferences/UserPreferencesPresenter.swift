@@ -9,6 +9,7 @@
 import Foundation
 import RxSwift
 import UserNotifications
+import PhoneNumberKit
 
 protocol UserPreferencesPresenterInput {
     func process(_ response:UserPreferencesModel.Functions.Response)
@@ -40,6 +41,8 @@ class UserPreferencesPresenter:UserPreferencesPresenterInput {
         for (key, value) in preferences {
             userPrefsDict[key] = value
         }
+        
+        userPrefsDict[UserPreferencesModel.Keys.SMSN] = smsNotificationsView(with: userDTO.address)
         
         pushNotificationsViewModel(with: userDTO.userPreferences) { [weak self] (viewModelDict) in
             DispatchQueue.main.async {
@@ -77,6 +80,18 @@ class UserPreferencesPresenter:UserPreferencesPresenterInput {
                 completion([UserPreferencesModel.Keys.PushNotifcations:viewModel])
             }
         })
+    }
+    
+    private func smsNotificationsView(with addressDTO:ACUserAddressDTO?) -> UserPreferencesSwitchViewModel?{
+        guard let addressDTO = addressDTO,
+            let phoneNumber = addressDTO.phoneNumber else {return nil}
+        let phoneNumberKit = PhoneNumberKit()
+        do {
+            _ = try phoneNumberKit.parse(phoneNumber) // determnine if this is a valid phone number
+            return UserPreferencesSwitchViewModel(value: true, placeHolder: "SMS Notifications")
+        } catch {
+            return nil
+        }
     }
     
 }

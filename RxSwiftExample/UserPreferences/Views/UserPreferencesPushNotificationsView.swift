@@ -17,7 +17,6 @@ class UserPreferencesPushNotificationsView:UIView {
     
     fileprivate lazy var titleLabel:UILabel = {
         let label = UILabel()
-        
         self.addSubview(label)
         return label
     }()
@@ -43,7 +42,7 @@ class UserPreferencesPushNotificationsView:UIView {
         return view
     }()
     
-    private var shouldShowSwitch:Bool = true
+    private var shouldShowSwitch:Bool = false
     
     public func configure(with viewModel:UserPreferencesNotificationModel) {
         titleLabel.text = viewModel.placeHolder
@@ -61,28 +60,30 @@ class UserPreferencesPushNotificationsView:UIView {
     private func configureForSwitch(with viewModel:UserPreferencesNotificationModel) {
         shouldShowSwitch = true
         actionLabel.isHidden = true
-        
     }
     
     override func updateConstraints() {
-        titleLabel.snp.updateConstraints { (make) in
+        titleLabel.snp.remakeConstraints { (make) in
             make.top.bottom.equalTo(self).inset(15).priority(999)
             make.leading.equalTo(self).inset(20)
-            make.trailing.equalTo(self.switchController.snp.leading).offset(-10)
+            if self.shouldShowSwitch {
+                make.trailing.equalTo(self.switchController.snp.leading).offset(-10)
+            } else {
+                make.trailing.equalTo(self.actionLabel.snp.leading).offset(-10)
+            }
         }
         
         if shouldShowSwitch {
-            switchController.snp.updateConstraints { (make) in
+            switchController.snp.remakeConstraints { (make) in
                 make.trailing.equalTo(self).inset(15).priority(999)
                 make.centerY.equalTo(self.titleLabel)
             }
         } else {
-            actionLabel.snp.updateConstraints { (make) in
+            actionLabel.snp.remakeConstraints { (make) in
                 make.trailing.equalTo(self).inset(15).priority(999)
                 make.centerY.equalTo(self.titleLabel)
             }
         }
-
         
         dividerLine.snp.updateConstraints { (make) in
             make.leading.trailing.equalTo(self).inset(20).priority(999)
